@@ -1,0 +1,16 @@
+Package: loinc
+Type: Package
+Title: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API
+Version: 0.0.0.9000
+Authors@R: person(given = "Ernest", 
+                  family = "Guevarra", 
+                  comment = c(ORCID = "0000-0002-4887-4415"), 
+                  email = "ernest@guevarra.io", 
+                  role = c("aut", "cre", "cph"))
+Description: The Logical Observation Identifiers Names and Codes or LOINC LOINC
+    is the international standard for identifying health observations,
+    measurements, and documents. This package interfaces with the LOINC API.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+Config/roxygen2/version: 8.0.0
