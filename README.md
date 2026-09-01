@@ -10,6 +10,10 @@ has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/OxfordIHTM/loinc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/loinc/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/OxfordIHTM/loinc/graph/badge.svg)](https://app.codecov.io/gh/OxfordIHTM/loinc)
+[![CodeFactor](https://www.codefactor.io/repository/github/oxfordihtm/loinc/badge)](https://www.codefactor.io/repository/github/oxfordihtm/loinc)
 <!-- badges: end -->
 
 The Logical Observation Identifiers Names and Codes or LOINC LOINC is
