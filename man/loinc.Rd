@@ -10,6 +10,15 @@ The Logical Observation Identifiers Names and Codes or LOINC LOINC is the
 international standard for identifying health observations, measurements, and
 documents. This package interfaces with the LOINC API.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://oxford-ihtm.io/loinc/}
+  \item \url{https://github.com/OxfordIHTM/loinc}
+  \item Report bugs at \url{https://github.com/OxfordIHTM/loinc/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Ernest Guevarra \email{ernest@guevarra.io} (\href{https://orcid.org/0000-0002-4887-4415}{ORCID}) [copyright holder]
 

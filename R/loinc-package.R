@@ -8,5 +8,9 @@
 #' @docType package
 #' @keywords internal
 #' @name loinc
+#' 
+#' @import httr2
+#' @importFrom dplyr bind_rows
+#'
 #'
 "_PACKAGE"
