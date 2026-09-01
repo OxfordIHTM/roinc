@@ -15,11 +15,3 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 The Logical Observation Identifiers Names and Codes or LOINC LOINC is
 the international standard for identifying health observations,
 measurements, and documents. This package interfaces with the LOINC API.
-
-## Installation
-
-You can install the development version of loinc like so:
-
-``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
-```

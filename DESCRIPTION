@@ -11,6 +11,15 @@ Description: The Logical Observation Identifiers Names and Codes or LOINC LOINC
     is the international standard for identifying health observations,
     measurements, and documents. This package interfaces with the LOINC API.
 License: GPL (>= 3)
+Depends: 
+    R (>= 4.1.0)
+Imports: 
+    dplyr,
+    httr2
 Encoding: UTF-8
+Language: en-GB
 LazyData: true
 Config/roxygen2/version: 8.0.0
+Roxygen: list(markdown = TRUE)
+URL: https://oxford-ihtm.io/loinc/, https://github.com/OxfordIHTM/loinc
+BugReports: https://github.com/OxfordIHTM/loinc/issues
