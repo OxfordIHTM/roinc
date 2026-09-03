@@ -26,3 +26,7 @@ base_url_download <- "https://loinc.regenstrief.org/api/v1"
 ## Base URL for search api ----
 base_url_search <- "https://loinc.regenstrief.org/searchapi"
 
+## Base URL for terminology service ----
+base_url_terminology <- "https://fhir.loinc.org"
+
+
