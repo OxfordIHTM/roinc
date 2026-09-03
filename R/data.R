@@ -16,7 +16,7 @@
 #' | *PRODUCER* | The person or organisation that provided the translation |
 #'
 #' @examples
-#' lingustic_variants
+#' linguistic_variants
 #'
 #'
 "linguistic_variants"

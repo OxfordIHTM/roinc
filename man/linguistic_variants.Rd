@@ -23,7 +23,7 @@ LOINC Linguistic Variants are provided by an international community of
 volunteer translators.
 }
 \examples{
-lingustic_variants
+linguistic_variants
 
 
 }
