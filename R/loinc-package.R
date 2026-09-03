@@ -11,6 +11,9 @@
 #' 
 #' @import httr2
 #' @importFrom dplyr bind_rows
+#' @importFrom tidyr unnest_wider
+#' @importFrom tibble tibble
+#' @importFrom rlang .data
 #'
 #'
 "_PACKAGE"
