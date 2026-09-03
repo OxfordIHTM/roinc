@@ -52,19 +52,21 @@ loinc_search_groups(
 )
 }
 \arguments{
-\item{query}{Search string}
+\item{query}{Search string.}
 
-\item{rows}{Integer value to indicate the number of rows to return}
+\item{rows}{Integer value to indicate the number of rows to return. When set
+to NULL (default), 50 rows of search results are returned.}
 
-\item{offset}{Integer value to indicate the offset, for paging}
+\item{offset}{Integer value to indicate the offset, for paging. When set to
+NULL (default), offset of 0 is used.}
 
 \item{sortorder}{String value, specifying which field to sort on and order
-(desc and asc)}
+(desc and asc).}
 
 \item{language}{Integer value to indicate which language to return.}
 
 \item{includefiltercounts}{Boolean value to indicate if information for
-filters should be returned with the results}
+filters should be returned with the results.}
 
 \item{tabular}{Logical. Should response be tabular? If TRUE (default),
 response is converted to a \link[tibble:tibble]{tibble}. If FALSE, response is kept
