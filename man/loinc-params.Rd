@@ -17,6 +17,10 @@
 
 \item{includefiltercounts}{Boolean value to indicate if information for
 filters should be returned with the results}
+
+\item{tabular}{Logical. Should response be tabular? If TRUE (default),
+response is converted to a \link[tibble:tibble]{tibble}. If FALSE, response is kept
+as a \link{list}.}
 }
 \description{
 Common parameters used across loinc functions

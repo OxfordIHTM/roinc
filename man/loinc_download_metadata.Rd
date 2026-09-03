@@ -2,25 +2,31 @@
 % Please edit documentation in R/loinc_download.R
 \name{loinc_download_metadata}
 \alias{loinc_download_metadata}
+\alias{loinc_download_metadata_version}
 \title{Get LOINC's primary release artifact download metadata}
 \usage{
 loinc_download_metadata(tabular = TRUE)
+
+loinc_download_metadata_version(version = NULL, tabular = TRUE)
 }
 \arguments{
 \item{tabular}{Logical. Should response be tabular? If TRUE (default),
 response is converted to a \link[tibble:tibble]{tibble}. If FALSE, response is kept
 as a \link{list}.}
+
+\item{version}{Character string for LOINC version.}
 }
 \value{
 A \link{list} or \link[tibble:tibble]{tibble} of the metadata for the current and for every
-past release of LOINC.
+past release of LOINC or for specific version requested.
 }
 \description{
 Get LOINC's primary release artifact download metadata
 }
 \examples{
 \dontrun{
-loinc_download_metadata
+loinc_download_metadata()
+loinc_download_metadata_version()
 }
 
 }

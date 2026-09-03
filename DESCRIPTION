@@ -15,7 +15,10 @@ Depends:
     R (>= 4.1.0)
 Imports: 
     dplyr,
-    httr2
+    httr2,
+    rlang,
+    tibble,
+    tidyr
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
