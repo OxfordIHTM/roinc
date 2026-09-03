@@ -15,6 +15,9 @@
 #'
 NULL
 
+## Base URL for download api ----
+base_url_download <- "https://loinc.regenstrief.org/api/v1"
 
-base_url <- "https://loinc.regenstrief.org/api/v1"
+## Base URL for search api ----
+base_url_search <- "https://loinc_regenstrief.org/searchapi"
 
