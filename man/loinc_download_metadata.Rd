@@ -14,7 +14,8 @@ loinc_download_metadata_version(version = NULL, tabular = TRUE)
 response is converted to a \link[tibble:tibble]{tibble}. If FALSE, response is kept
 as a \link{list}.}
 
-\item{version}{Character string for LOINC version.}
+\item{version}{A string value for LOINC version identifier to specify which
+versions of concepts in LOINC to retrieve.}
 }
 \value{
 A \link{list} or \link[tibble:tibble]{tibble} of the metadata for the current and for every

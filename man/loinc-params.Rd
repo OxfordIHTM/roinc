@@ -20,9 +20,19 @@ NULL (default), offset of 0 is used.}
 \item{includefiltercounts}{Boolean value to indicate if information for
 filters should be returned with the results.}
 
+\item{code}{String value for LOINC code identifier for a LOINC code, part,
+answer list, or answer.}
+
 \item{tabular}{Logical. Should response be tabular? If TRUE (default),
 response is converted to a \link[tibble:tibble]{tibble}. If FALSE, response is kept
 as a \link{list}.}
+
+\item{property}{A string value or vector of string values for specific LOINC
+code system property or properties to return in a lookup. The current list
+of property codes that will return a result are found in \url{https://build.fhir.org/ig/HL7/termchangeset-ig/en/CodeSystem-loinc-property-cs.html}.}
+
+\item{version}{A string value for LOINC version identifier to specify which
+versions of concepts in LOINC to retrieve.}
 }
 \description{
 Common parameters used across loinc functions

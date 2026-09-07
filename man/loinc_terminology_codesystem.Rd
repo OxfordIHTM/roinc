@@ -2,14 +2,27 @@
 % Please edit documentation in R/loinc_terminology.R
 \name{loinc_terminology_codesystem}
 \alias{loinc_terminology_codesystem}
+\alias{loinc_terminology_codesystem_lookup}
 \title{Retrieving the LOINC CodeSystem resource for FHIR}
 \usage{
 loinc_terminology_codesystem(tabular = TRUE)
+
+loinc_terminology_codesystem_lookup(code, property = NULL, version = NULL)
 }
 \arguments{
 \item{tabular}{Logical. Should response be tabular? If TRUE (default),
 response is converted to a \link[tibble:tibble]{tibble}. If FALSE, response is kept
 as a \link{list}.}
+
+\item{code}{String value for LOINC code identifier for a LOINC code, part,
+answer list, or answer.}
+
+\item{property}{A string value or vector of string values for specific LOINC
+code system property or properties to return in a lookup. The current list
+of property codes that will return a result are found in \url{https://build.fhir.org/ig/HL7/termchangeset-ig/en/CodeSystem-loinc-property-cs.html}.}
+
+\item{version}{A string value for LOINC version identifier to specify which
+versions of concepts in LOINC to retrieve.}
 }
 \value{
 A \link{list} or a \link[tibble:tibble]{tibble} of LOINC CodeSystem resources for FHIR.
@@ -20,6 +33,10 @@ Retrieving the LOINC CodeSystem resource for FHIR
 \examples{
 \dontrun{
 loinc_terminology_codeystem()
+loinc_terminology_codesystem_lookup(code = "4544-3")
+loinc_terminology_codesystem_lookup(code = "LP31755-9")
+loinc_terminology_codesystem_lookup(code = "LL1162-8")
+loinc_terminology_codesystem_lookup(code = "LA6751-7")
 }
 
 }
