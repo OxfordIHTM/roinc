@@ -1,10 +1,7 @@
 #'
 #' Get LOINC's primary release artifact download metadata
 #' 
-#' @param version Character string for LOINC version.
-#' @param tabular Logical. Should response be tabular? If TRUE (default),
-#'   response is converted to a [tibble]. If FALSE, response is kept
-#'   as a [list].
+#' @inheritParams loinc-params tabular version
 #' 
 #' @returns A [list] or [tibble] of the metadata for the current and for every
 #'   past release of LOINC or for specific version requested.
