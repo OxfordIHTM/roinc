@@ -7,18 +7,18 @@
 #' 
 #' @examples
 #' \dontrun{
-#' loinc_terminology_codeystem()
-#' loinc_terminology_codesystem_lookup(code = "4544-3")
-#' loinc_terminology_codesystem_lookup(code = "LP31755-9")
-#' loinc_terminology_codesystem_lookup(code = "LL1162-8")
-#' loinc_terminology_codesystem_lookup(code = "LA6751-7")
+#' loinc_codeystem()
+#' loinc_codesystem_lookup(code = "4544-3")
+#' loinc_codesystem_lookup(code = "LP31755-9")
+#' loinc_codesystem_lookup(code = "LL1162-8")
+#' loinc_codesystem_lookup(code = "LA6751-7")
 #' }
 #' 
-#' @rdname loinc_terminology_codesystem
+#' @rdname loinc_codesystem
 #' @export
 #' 
 
-loinc_terminology_codesystem <- function(tabular = TRUE) {
+loinc_codesystem <- function(tabular = TRUE) {
   req <- httr2::request(base_url = base_url_terminology) |>
     httr2::req_url_path_append("CodeSystem") |>
     httr2::req_url_query(url = "http://loinc.org") |>
@@ -53,11 +53,11 @@ loinc_terminology_codesystem <- function(tabular = TRUE) {
 }
 
 #'
-#' @rdname loinc_terminology_codesystem
+#' @rdname loinc_codesystem
 #' @export
 #' 
 
-loinc_terminology_codesystem_lookup <- function(code, 
+loinc_codesystem_lookup <- function(code, 
                                                 property = NULL,
                                                 version = NULL) {
   req <- httr2::request(base_url = base_url_terminology) |>

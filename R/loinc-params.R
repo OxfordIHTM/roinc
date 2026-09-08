@@ -11,8 +11,8 @@
 #' @param language Integer value to indicate which language to return.
 #' @param includefiltercounts Boolean value to indicate if information for
 #'   filters should be returned with the results.
-#' @param code String value for LOINC code identifier for a LOINC code, part,
-#'   answer list, or answer.
+#' @param code String value for LOINC code identifier for a LOINC code,
+#'   part, answer list, or answer.
 #' @param tabular Logical. Should response be tabular? If TRUE (default),
 #'   response is converted to a [tibble]. If FALSE, response is kept
 #'   as a [list].
@@ -21,7 +21,8 @@
 #'   of property codes that will return a result are found in <https://build.fhir.org/ig/HL7/termchangeset-ig/en/CodeSystem-loinc-property-cs.html>.
 #' @param version A string value for LOINC version identifier to specify which
 #'   versions of concepts in LOINC to retrieve.
-#' 
+#' @param valueset A string value for a LOINC term, answer lists, or LOINC
+#'   groups that specify a set of codes drawn from one or more LOINC code systems.
 #' 
 #'
 #' @name loinc-params
