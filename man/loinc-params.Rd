@@ -36,6 +36,8 @@ versions of concepts in LOINC to retrieve.}
 
 \item{valueset}{A string value for a LOINC term, answer lists, or LOINC
 groups that specify a set of codes drawn from one or more LOINC code systems.}
+
+\item{panel}{A string value for a LOINC panel.}
 }
 \description{
 Common parameters used across loinc functions
