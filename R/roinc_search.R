@@ -1,7 +1,7 @@
 #'
 #' Search the LOINC database
 #' 
-#' @inheritParams loinc-params query rows offset sortorder language includefiltercounts tabular
+#' @inheritParams roinc-params query rows offset sortorder language includefiltercounts tabular
 #' @param summary Logical. Should the results summary be returned? If FALSE
 #'   (default), full search results are  returned. If TRUE, only results summary
 #'   are returned.
@@ -10,17 +10,17 @@
 #' 
 #' @examples
 #' \dontrun{
-#' loinc_search_loincs()
-#' loinc_search_answerlists()
-#' loinc_search_parts()
-#' loinc_search_groups()
+#' roinc_search_loincs()
+#' roinc_search_answerlists()
+#' roinc_search_parts()
+#' roinc_search_groups()
 #' }
 #' 
-#' @rdname loinc_search
+#' @rdname roinc_search
 #' @export
 #' 
 
-loinc_search_loincs <- function(query,
+roinc_search_loincs <- function(query,
                                 rows = NULL,
                                 offset = NULL,
                                 sortorder = NULL,
@@ -82,11 +82,11 @@ loinc_search_loincs <- function(query,
 }
 
 #'
-#' @rdname loinc_search
+#' @rdname roinc_search
 #' @export
 #' 
 
-loinc_search_answerlists <- function(query,
+roinc_search_answerlists <- function(query,
                                      rows = NULL,
                                      offset = NULL,
                                      sortorder = NULL,
@@ -149,11 +149,11 @@ loinc_search_answerlists <- function(query,
 
 
 #'
-#' @rdname loinc_search
+#' @rdname roinc_search
 #' @export
 #' 
 
-loinc_search_parts <- function(query,
+roinc_search_parts <- function(query,
                                rows = NULL,
                                offset = NULL,
                                sortorder = NULL,
@@ -216,11 +216,11 @@ loinc_search_parts <- function(query,
 
 
 #'
-#' @rdname loinc_search
+#' @rdname roinc_search
 #' @export
 #' 
 
-loinc_search_groups <- function(query,
+roinc_search_groups <- function(query,
                                 rows = NULL,
                                 offset = NULL,
                                 sortorder = NULL,

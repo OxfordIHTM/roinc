@@ -6,13 +6,13 @@
 #' 
 #' @examples
 #' \dontrun{
-#' loinc_set_credentials
+#' roinc_set_credentials
 #' }
 #' 
 #' @export
 #' 
 
-loinc_set_credentials <- function(username, password) {
+roinc_set_credentials <- function(username, password) {
   check_username(username = username)
   check_password(password = password)
 

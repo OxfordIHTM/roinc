@@ -7,7 +7,7 @@
 #'
 #' @docType package
 #' @keywords internal
-#' @name loinc
+#' @name roinc
 #' 
 #' @import httr2
 #' @importFrom dplyr bind_rows

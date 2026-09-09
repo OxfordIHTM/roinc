@@ -1,24 +1,24 @@
 #'
 #' Retrieving the LOINC CodeSystem resource for FHIR
 #' 
-#' @inheritParams loinc-params tabular code property version
+#' @inheritParams roinc-params tabular code property version
 #' 
 #' @returns A [list] or a [tibble] of LOINC CodeSystem resources for FHIR.
 #' 
 #' @examples
 #' \dontrun{
-#' loinc_codeystem()
-#' loinc_codesystem_lookup(code = "4544-3")
-#' loinc_codesystem_lookup(code = "LP31755-9")
-#' loinc_codesystem_lookup(code = "LL1162-8")
-#' loinc_codesystem_lookup(code = "LA6751-7")
+#' roinc_codeystem()
+#' roinc_codesystem_lookup(code = "4544-3")
+#' roinc_codesystem_lookup(code = "LP31755-9")
+#' roinc_codesystem_lookup(code = "LL1162-8")
+#' roinc_codesystem_lookup(code = "LA6751-7")
 #' }
 #' 
-#' @rdname loinc_codesystem
+#' @rdname roinc_codesystem
 #' @export
 #' 
 
-loinc_codesystem <- function(tabular = TRUE) {
+roinc_codesystem <- function(tabular = TRUE) {
   req <- httr2::request(base_url = base_url_terminology) |>
     httr2::req_url_path_append("CodeSystem") |>
     httr2::req_url_query(url = "http://loinc.org") |>
@@ -53,11 +53,11 @@ loinc_codesystem <- function(tabular = TRUE) {
 }
 
 #'
-#' @rdname loinc_codesystem
+#' @rdname roinc_codesystem
 #' @export
 #' 
 
-loinc_codesystem_lookup <- function(code, 
+roinc_codesystem_lookup <- function(code, 
                                     property = NULL,
                                     version = NULL) {
   req <- httr2::request(base_url = base_url_terminology) |>
