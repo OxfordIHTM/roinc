@@ -1,9 +1,9 @@
 bibentry(
   bibtype  = "Manual",
   header   = "To cite loinc in publications use:",
-  title    = "loinc: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API",
+  title    = "roinc: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API",
   author   = person("Ernest Guevarra"),
   year     = "2026",
   note     = "R package version 0.0.9000",
-  url      = "https://oxford-ihtm.io/loinc/"
+  url      = "https://oxford-ihtm.io/roinc/"
 )

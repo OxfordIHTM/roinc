@@ -1,22 +1,22 @@
 #'
 #' Get LOINC's primary release artifact download metadata
 #' 
-#' @inheritParams loinc-params tabular version
+#' @inheritParams roinc-params tabular version
 #' 
 #' @returns A [list] or [tibble] of the metadata for the current and for every
 #'   past release of LOINC or for specific version requested.
 #' 
 #' @examples
 #' \dontrun{
-#' loinc_download_metadata()
-#' loinc_download_metadata_version()
+#' roinc_download_metadata()
+#' roinc_download_metadata_version()
 #' }
 #' 
-#' @rdname loinc_download_metadata
+#' @rdname roinc_download_metadata
 #' @export
 #' 
 
-loinc_download_metadata <- function(tabular = TRUE) {
+roinc_download_metadata <- function(tabular = TRUE) {
   ## Create base request for all metadata and authenticate ----
   req <- httr2::request(base_url = base_url_download) |>
     httr2::req_url_path_append("Loinc/All") |>
@@ -37,11 +37,11 @@ loinc_download_metadata <- function(tabular = TRUE) {
 }
 
 #'
-#' @rdname loinc_download_metadata
+#' @rdname roinc_download_metadata
 #' @export
 #' 
 
-loinc_download_metadata_version <- function(version = NULL, tabular = TRUE) {
+roinc_download_metadata_version <- function(version = NULL, tabular = TRUE) {
   ## Create base request for current version ----
   req <- httr2::request(base_url = base_url_download) |>
     httr2::req_url_path_append("Loinc")

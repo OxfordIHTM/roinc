@@ -1,20 +1,20 @@
 #'
 #' Retrieving the LOINC concept map resource for FHIR
 #' 
-#' @inheritParams loinc-params code
+#' @inheritParams roinc-params code
 #' 
 #' @returns A [list] or a [tibble] of LOINC ConceptMap resources for FHIR.
 #' 
 #' @examples
 #' \dontrun{
-#' loinc_concept_map("30657-1")
+#' roinc_concept_map("30657-1")
 #' }
 #' 
-#' @rdname loinc_concept_map
+#' @rdname roinc_concept_map
 #' @export
 #' 
 
-loinc_concept_map <- function(code) {
+roinc_concept_map <- function(code) {
   ## Create base request for value set ----
   req <- httr2::request(base_url = base_url_terminology) |>
     httr2::req_url_path_append("ConceptMap")

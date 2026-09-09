@@ -1,4 +1,4 @@
-Package: loinc
+Package: roinc
 Type: Package
 Title: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API
 Version: 0.0.0.9000
@@ -26,6 +26,6 @@ Language: en-GB
 LazyData: true
 Config/roxygen2/version: 8.0.0
 Roxygen: list(markdown = TRUE)
-URL: https://oxford-ihtm.io/loinc/, https://github.com/OxfordIHTM/loinc
-BugReports: https://github.com/OxfordIHTM/loinc/issues
+URL: https://oxford-ihtm.io/roinc/, https://github.com/OxfordIHTM/roinc
+BugReports: https://github.com/OxfordIHTM/roinc/issues
 

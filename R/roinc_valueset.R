@@ -1,7 +1,7 @@
 #'
 #' Retrieving the LOINC value set resource for FHIR
 #' 
-#' @inheritParams loinc-params valueset code version
+#' @inheritParams roinc-params valueset code version
 #' @param expand Logical. Should a value set expansion be performed? If TRUE
 #'   (default), the terms in a given value set are returned.
 #' 
@@ -9,16 +9,16 @@
 #' 
 #' @examples
 #' \dontrun{
-#' loinc_valueset("LL1162-8")
-#' loinc_valueset("LL1162-8", expand = TRUE, metadata = FALSE)
-#' loinc_valueset_validate("LG33055-1", "8867-4")
+#' roinc_valueset("LL1162-8")
+#' roinc_valueset("LL1162-8", expand = TRUE, metadata = FALSE)
+#' roinc_valueset_validate("LG33055-1", "8867-4")
 #' }
 #' 
-#' @rdname loinc_valueset
+#' @rdname roinc_valueset
 #' @export
 #' 
 
-loinc_valueset <- function(valueset, 
+roinc_valueset <- function(valueset, 
                            expand = FALSE,
                            version = NULL) {
   ## Create base request for value set ----
@@ -59,10 +59,10 @@ loinc_valueset <- function(valueset,
 
 
 #'
-#' @rdname loinc_valueset
+#' @rdname roinc_valueset
 #' 
 
-loinc_valueset_validate <- function(valueset, code) {
+roinc_valueset_validate <- function(valueset, code) {
   req <- httr2::request(base_url = base_url_terminology) |>
     httr2::req_url_path_append("ValueSet", valueset, "$validate-code") |>
     httr2::req_url_query(system = "http://loinc.org", code = code) |>
