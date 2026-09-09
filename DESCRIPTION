@@ -19,6 +19,8 @@ Imports:
     rlang,
     tibble,
     tidyr
+Suggests: 
+    spelling
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
@@ -26,3 +28,4 @@ Config/roxygen2/version: 8.0.0
 Roxygen: list(markdown = TRUE)
 URL: https://oxford-ihtm.io/loinc/, https://github.com/OxfordIHTM/loinc
 BugReports: https://github.com/OxfordIHTM/loinc/issues
+
