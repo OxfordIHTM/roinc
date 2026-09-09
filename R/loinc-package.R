@@ -11,7 +11,7 @@
 #' 
 #' @import httr2
 #' @importFrom dplyr bind_rows
-#' @importFrom tidyr unnest_wider
+#' @importFrom tidyr unnest_wider unnest
 #' @importFrom tibble tibble
 #' @importFrom rlang .data
 #'

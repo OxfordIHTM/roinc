@@ -58,8 +58,8 @@ loinc_codesystem <- function(tabular = TRUE) {
 #' 
 
 loinc_codesystem_lookup <- function(code, 
-                                                property = NULL,
-                                                version = NULL) {
+                                    property = NULL,
+                                    version = NULL) {
   req <- httr2::request(base_url = base_url_terminology) |>
     httr2::req_url_path_append("CodeSystem", "$lookup") |>
     httr2::req_url_query(

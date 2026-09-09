@@ -23,6 +23,7 @@
 #'   versions of concepts in LOINC to retrieve.
 #' @param valueset A string value for a LOINC term, answer lists, or LOINC
 #'   groups that specify a set of codes drawn from one or more LOINC code systems.
+#' @param panel A string value for a LOINC panel.
 #' 
 #'
 #' @name loinc-params
