@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# loinc: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API
+# roinc: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API
 
 <!-- badges: start -->
 

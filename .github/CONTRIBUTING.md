@@ -2,7 +2,7 @@
 
 ## Bugs
 
-* Submit an issue on the [issues page](https://github.com/OxfordIHTM/loinc/issues)
+* Submit an issue on the [issues page](https://github.com/OxfordIHTM/roinc/issues)
 
 ## Code contributions
 
@@ -11,14 +11,14 @@
 * Clone your version on your account down to your machine from your account 
 
 ```
-git clone https://github.com/<yourgithubusername>/loinc.git
+git clone https://github.com/<yourgithubusername>/roinc.git
 ```
 
-* Make sure to track progress upstream i.e., on our version of `loinc` 
-at `OxfordIHTM/loinc`, by doing 
+* Make sure to track progress upstream i.e., on our version of `{roinc}` 
+at `OxfordIHTM/roinc`, by doing 
 
 ```
-git remote add upstream https://github.com/OxfordIHTM/loinc.git
+git remote add upstream https://github.com/OxfordIHTM/roinc.git
 ```
 
 * Before making changes make sure to pull changes in from `upstream` by doing 
@@ -32,4 +32,4 @@ documentation
 
 * Push up changes to your account
 
-* Submit a pull request at `OxfordIHTM/loinc`
+* Submit a pull request at `OxfordIHTM/roinc`
