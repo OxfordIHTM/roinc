@@ -10,10 +10,10 @@ has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/OxfordIHTM/loinc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/loinc/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/OxfordIHTM/roinc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/roinc/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/OxfordIHTM/loinc/graph/badge.svg)](https://app.codecov.io/gh/OxfordIHTM/loinc)
-[![CodeFactor](https://www.codefactor.io/repository/github/oxfordihtm/loinc/badge)](https://www.codefactor.io/repository/github/oxfordihtm/loinc)
+coverage](https://codecov.io/gh/OxfordIHTM/roinc/graph/badge.svg)](https://app.codecov.io/gh/OxfordIHTM/roinc)
+[![CodeFactor](https://www.codefactor.io/repository/github/oxfordihtm/roinc/badge)](https://www.codefactor.io/repository/github/oxfordihtm/roinc)
 <!-- badges: end -->
 
 The [Logical Observation Identifiers Names and Codes or
@@ -26,7 +26,7 @@ service](https://loinc.org/fhir),
 
 ## What does the package do?
 
-Please note that `{loinc}` is in early experimental development stage
+Please note that `{roinc}` is in early experimental development stage
 and functionalities and their corresponding syntax may change over time
 until we reach a more stable version.
 
@@ -43,13 +43,13 @@ Currently, the package provides functions for:
 
 ## Installation
 
-`{loinc}` is not yet on [CRAN](https://cran.r-project.org) but can be
+`{roinc}` is not yet on [CRAN](https://cran.r-project.org) but can be
 installed from the [Oxford iHealth R
 Universe](https://oxfordihtm.r-universe.dev) as follows:
 
 ``` r
 install.packages(
-  "loinc",
+  "roinc",
   repos = c('https://oxfordihtm.r-universe.dev', 'https://cloud.r-project.org')
 )
 ```
@@ -58,52 +58,52 @@ or via the `{pak}` package as follows:
 
 ``` r
 if(!require(pak)) install.packages("pak")
-pak::pak("OxfordIHTM/loinc")
+pak::pak("OxfordIHTM/roinc")
 ```
 
-Once installed, `{loinc}` can then be loaded into an R session
+Once installed, `{roinc}` can then be loaded into an R session
 
 ``` r
 # load package
-library(loinc)
+library(roinc)
 ```
 
 ## Usage
 
 ## Citation
 
-If you use the `{loinc}` package in your work, please cite using the
+If you use the `{roinc}` package in your work, please cite using the
 suggested citation provided by a call to the `citation` function as
 follows:
 
 ``` r
-citation("loinc")
+citation("roinc")
 #> To cite loinc in publications use:
 #> 
-#>   Ernest Guevarra (2026). _loinc: Interface to the Logical Observation
+#>   Ernest Guevarra (2026). _roinc: Interface to the Logical Observation
 #>   Identifiers Names and Codes (LOINC) API_. R package version 0.0.9000,
-#>   <https://oxford-ihtm.io/loinc/>.
+#>   <https://oxford-ihtm.io/roinc/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
-#>     title = {loinc: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API},
+#>     title = {roinc: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API},
 #>     author = {{Ernest Guevarra}},
 #>     year = {2026},
 #>     note = {R package version 0.0.9000},
-#>     url = {https://oxford-ihtm.io/loinc/},
+#>     url = {https://oxford-ihtm.io/roinc/},
 #>   }
 ```
 
 ## Community guidelines
 
 Feedback, bug reports and feature requests are welcome; file issues or
-seek support [here](https://github.com/OxfordIHTM/loinc/issues). If you
+seek support [here](https://github.com/OxfordIHTM/roinc/issues). If you
 would like to contribute to the package, please see our [contributing
-guidelines](https://oxford-ihtm.io/loinc/CONTRIBUTING.html).
+guidelines](https://oxford-ihtm.io/roinc/CONTRIBUTING.html).
 
 This project is released with a [Contributor Code of
-Conduct](https://oxford-ihtm.io/loinc/CODE_OF_CONDUCT.html). By
+Conduct](https://oxford-ihtm.io/roinc/CODE_OF_CONDUCT.html). By
 participating in this project you agree to abide by its terms.
 
 If you are interested in [Oxford iHealth](https://oxford-ihtm.io)’s work
