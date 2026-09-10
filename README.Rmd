@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# roinc: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API
+# roinc: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API <img src="man/figures/logo.png" width="200" align="right" />
 
 <!-- badges: start -->
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 [![CodeFactor](https://www.codefactor.io/repository/github/oxfordihtm/roinc/badge)](https://www.codefactor.io/repository/github/oxfordihtm/roinc)
 <!-- badges: end -->
 
-The [Logical Observation Identifiers Names and Codes or LOINC](https://loinc.org/) is the international standard for identifying health observations, measurements, and documents. This package interfaces with the LOINC API for their [terminology service](https://loinc.org/fhir), [search](https://loinc.org/kb/api/search-api), and [download](https://loinc.org/kb/api/download).
+The [Logical Observation Identifiers Names and Codes or LOINC](https://loinc.org/) is the international standard for identifying health observations, measurements, and documents. This package interfaces with the LOINC API for their [terminology service](https://loinc.org/fhir), [search](https://loinc.org/kb/api/search-api), and [download](https://loinc.org/kb/api/download) endpoints.
 
 ## What does the package do?
 
