@@ -6,7 +6,7 @@ health observations, measurements, and documents. This package
 interfaces with the LOINC API for their [terminology
 service](https://loinc.org/fhir),
 [search](https://loinc.org/kb/api/search-api), and
-[download](https://loinc.org/kb/api/download).
+[download](https://loinc.org/kb/api/download) endpoints.
 
 ## What does the package do?
 
