@@ -20,7 +20,8 @@ Imports:
     tibble,
     tidyr
 Suggests: 
-    spelling
+    spelling,
+    testthat (>= 3.0.0)
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
@@ -28,3 +29,4 @@ Config/roxygen2/version: 8.0.0
 Roxygen: list(markdown = TRUE)
 URL: https://oxford-ihtm.io/roinc/, https://github.com/OxfordIHTM/roinc, http://oxford-ihtm.io/roinc/
 BugReports: https://github.com/OxfordIHTM/roinc/issues
+Config/testthat/edition: 3
