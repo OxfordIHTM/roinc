@@ -20,6 +20,7 @@ Imports:
     tibble,
     tidyr
 Suggests: 
+    httptest2,
     spelling,
     testthat (>= 3.0.0)
 Encoding: UTF-8
