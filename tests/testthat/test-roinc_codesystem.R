@@ -18,29 +18,6 @@ without_internet({
   })
 })
 
-x <- jsonlite::fromJSON(
-  "tests/testthat/fhir.loinc.org/CodeSystem-02047d.json",
-  simplifyVector = FALSE
-)
-
-x$meta <- tibble::tibble(meta = x$meta) |>
-  tidyr::unnest_longer(meta)
-
-x$link <- tibble::tibble(link = x$link) |>
-  tidyr::unnest_wider(link)
-
-x$entry <- tibble::tibble(entry = x$entry) |>
-  tidyr::unnest_wider(entry) |>
-  tidyr::unnest_wider(resource) |>
-  tidyr::unnest_wider(meta) |>
-  tidyr::unnest(tag) |>
-  tidyr::unnest_wider(tag)
-
-x <- x |>
-  dplyr::bind_rows()
-
-
-
 with_mock_api({
   test_that("roinc_codesystem_lookup returns appropriate response", {
     expect_named(
