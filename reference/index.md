@@ -26,11 +26,16 @@
   [`roinc_search_groups()`](https://oxford-ihtm.io/roinc/reference/roinc_search.md)
   : Search the LOINC database
 
+## Metadata
+
+- [`roinc_get_metadata()`](https://oxford-ihtm.io/roinc/reference/roinc_get_metadata.md)
+  [`roinc_get_metadata_version()`](https://oxford-ihtm.io/roinc/reference/roinc_get_metadata.md)
+  : Get LOINC's primary release artifact download metadata
+
 ## Download
 
-- [`roinc_download_metadata()`](https://oxford-ihtm.io/roinc/reference/roinc_download_metadata.md)
-  [`roinc_download_metadata_version()`](https://oxford-ihtm.io/roinc/reference/roinc_download_metadata.md)
-  : Get LOINC's primary release artifact download metadata
+- [`roinc_download()`](https://oxford-ihtm.io/roinc/reference/roinc_download.md)
+  : Download LOINC's primary release artifact
 
 ## Data
 

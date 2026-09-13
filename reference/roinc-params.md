@@ -56,6 +56,11 @@ Common parameters used across roinc functions
   A string value for LOINC version identifier to specify which versions
   of concepts in LOINC to retrieve.
 
+- directory:
+
+  Directory path to save the LOINC primary release artifact download to.
+  Default is to save in the current working directory.
+
 - valueset:
 
   A string value for a LOINC term, answer lists, or LOINC groups that

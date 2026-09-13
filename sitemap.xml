@@ -11,7 +11,8 @@
 <url><loc>https://oxford-ihtm.io/roinc/reference/roinc.html</loc></url>
 <url><loc>https://oxford-ihtm.io/roinc/reference/roinc_codesystem.html</loc></url>
 <url><loc>https://oxford-ihtm.io/roinc/reference/roinc_concept_map.html</loc></url>
-<url><loc>https://oxford-ihtm.io/roinc/reference/roinc_download_metadata.html</loc></url>
+<url><loc>https://oxford-ihtm.io/roinc/reference/roinc_download.html</loc></url>
+<url><loc>https://oxford-ihtm.io/roinc/reference/roinc_get_metadata.html</loc></url>
 <url><loc>https://oxford-ihtm.io/roinc/reference/roinc_questionnaire.html</loc></url>
 <url><loc>https://oxford-ihtm.io/roinc/reference/roinc_search.html</loc></url>
 <url><loc>https://oxford-ihtm.io/roinc/reference/roinc_set_credentials.html</loc></url>
