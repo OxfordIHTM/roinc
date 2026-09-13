@@ -15,6 +15,7 @@ Useful links:
 \itemize{
   \item \url{https://oxford-ihtm.io/roinc/}
   \item \url{https://github.com/OxfordIHTM/roinc}
+  \item \url{http://oxford-ihtm.io/roinc/}
   \item Report bugs at \url{https://github.com/OxfordIHTM/roinc/issues}
 }
 

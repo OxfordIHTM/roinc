@@ -69,10 +69,14 @@ reference:
     - roinc_search_parts
     - roinc_search_groups
 
+  - title: Metadata
+    contents:
+    - roinc_get_metadata
+    - roinc_get_metadata_version
+
   - title: Download
     contents:
-    - roinc_download_metadata
-    - roinc_download_metadata_version
+    - roinc_download
 
   - title: Data
     contents:
