@@ -1,52 +1,25 @@
 #'
-#' Get LOINC's primary release artifact download metadata
+#' Download LOINC's primary release artifact
 #' 
-#' @inheritParams roinc-params tabular version
+#' @inheritParams roinc-params version directory
 #' 
-#' @returns A [list] or [tibble] of the metadata for the current and for every
-#'   past release of LOINC or for specific version requested.
+#' @returns The file path to the downloaded LOINC primary release artifact.
 #' 
 #' @examples
 #' \dontrun{
-#' roinc_download_metadata()
-#' roinc_download_metadata_version()
+#' roinc_download()
 #' }
 #' 
-#' @rdname roinc_download_metadata
+#' @rdname roinc_download
 #' @export
 #' 
 
-roinc_download_metadata <- function(tabular = TRUE) {
-  ## Create base request for all metadata and authenticate ----
+roinc_download <- function(version = NULL, directory = NULL) {
+  ## Create base request for download ----
   req <- httr2::request(base_url = base_url_download) |>
-    httr2::req_url_path_append("Loinc/All") |>
-    httr2::req_auth_basic(
-      username = Sys.getenv("LOINC_USERNAME"),
-      password = Sys.getenv("LOINC_PASSWORD")
-    )
-
-  ## Get response ----
-  resp <- httr2::req_perform(req) |>
-    httr2::resp_body_json()
-
-  ## Tabularise ----
-  if (tabular) resp <- dplyr::bind_rows(resp)
-    
-  ## Return response ----
-  resp
-}
-
-#'
-#' @rdname roinc_download_metadata
-#' @export
-#' 
-
-roinc_download_metadata_version <- function(version = NULL, tabular = TRUE) {
-  ## Create base request for current version ----
-  req <- httr2::request(base_url = base_url_download) |>
-    httr2::req_url_path_append("Loinc")
-
-  ## Update base request if version is specified ----
+    httr2::req_url_path_append("Loinc/Download")
+  
+  ## Check for download version ----
   if (!is.null(version)) {
     req <- req |>
       httr2::req_url_query(version = version)
@@ -59,13 +32,22 @@ roinc_download_metadata_version <- function(version = NULL, tabular = TRUE) {
       password = Sys.getenv("LOINC_PASSWORD")
     )
   
-  ## Get response ----
-  resp <- httr2::req_perform(req) |>
-    httr2::resp_body_json()
-
-  ## Tabularise ----
-  if (tabular) resp <- dplyr::bind_rows(resp)
+  ## Determine filename ----
+  if (is.null(version))
+    filename <- "loinc_latest.zip"
+  else
+    filename <- paste0("loinc_", version, ".zip") 
   
-  ## Return response ----
-  resp
+  ## Determine file path ----
+  if (is.null(directory)) {
+    path <- filename
+  } else {
+    path <- file.path(directory, filename)
+  }
+
+  ## Get response ----
+  httr2::req_perform(req = req, path = path)
+
+  ## Return file path ----
+  path
 }

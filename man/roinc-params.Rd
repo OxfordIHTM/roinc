@@ -34,6 +34,9 @@ of property codes that will return a result are found in \url{https://build.fhir
 \item{version}{A string value for LOINC version identifier to specify which
 versions of concepts in LOINC to retrieve.}
 
+\item{directory}{Directory path to save the LOINC primary release artifact
+download to. Default is to save in the current working directory.}
+
 \item{valueset}{A string value for a LOINC term, answer lists, or LOINC
 groups that specify a set of codes drawn from one or more LOINC code systems.}
 
