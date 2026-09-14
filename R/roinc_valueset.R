@@ -10,7 +10,7 @@
 #' @examples
 #' \dontrun{
 #' roinc_valueset("LL1162-8")
-#' roinc_valueset("LL1162-8", expand = TRUE, metadata = FALSE)
+#' roinc_valueset("LL1162-8", expand = TRUE)
 #' roinc_valueset_validate("LG33055-1", "8867-4")
 #' }
 #' 
@@ -24,22 +24,30 @@ roinc_valueset <- function(valueset,
   ## Create base request for value set ----
   req <- httr2::request(base_url = base_url_terminology) |>
     httr2::req_url_path_append("ValueSet")
+
+  ## Create URL ----
+  url <- file.path("http://loinc.org", "vs", valueset)
   
   ## Check whether to perform value set expansion ----
   if (expand) {
-    path <- file.path("$expand?url=http://loinc.org", "vs", valueset)
+    path <- paste0("$expand?url=", url)
+
+    if (!is.null(version)) {
+      path <- paste0(path, "&valueSetVersion=", version)
+    }
+
+    req <- req |>
+      httr2::req_url_path_append(path)
   } else {
-    path <- file.path("?url=http://loinc.org", "vs", valueset)
-  }
+    path <- paste0("?url=", url)
 
-  ## Check for version ----
-  if (!is.null(version)) {
-    path <- paste0(path, "-", version)
-  }
+    if (!is.null(version)) {
+      path <- paste0(path, "&valueSetVersion=", version)
+    }
 
-  ## Append parameters ----
-  req <- req |>
-    httr2::req_url_path_append(path)
+    req <- req |>
+      httr2::req_url_path_append(path)
+  }
   
   ## Authenticate ----
   req <- req |>
