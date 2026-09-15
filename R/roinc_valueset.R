@@ -33,7 +33,7 @@ roinc_valueset <- function(valueset,
     path <- paste0("$expand?url=", url)
 
     if (!is.null(version)) {
-      path <- paste0(path, "&valueSetVersion=", version)
+      path <- paste0(path, "-", version)
     }
 
     req <- req |>
@@ -42,7 +42,7 @@ roinc_valueset <- function(valueset,
     path <- paste0("?url=", url)
 
     if (!is.null(version)) {
-      path <- paste0(path, "&valueSetVersion=", version)
+      path <- paste0(path, "-", version)
     }
 
     req <- req |>
