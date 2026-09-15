@@ -18,6 +18,12 @@ withr::with_environment(
     })
 
     test_that("roinc_set_credentials works as expected", {
+      expect_warning(
+        roinc_set_credentials(username = "username", password = "password")
+      )
+    })
+
+    test_that("roinc_set_credentials works as expected", {
       expect_message(
         roinc_set_credentials(username = "user", password = "pass")
       )
