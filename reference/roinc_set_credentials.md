@@ -22,6 +22,6 @@ roinc_set_credentials(username, password)
 
 ``` r
 if (FALSE) { # \dontrun{
-roinc_set_credentials
+roinc_set_credentials(username = "LOINC_USERNAME", password = "LOINC_PASSWORD")
 } # }
 ```

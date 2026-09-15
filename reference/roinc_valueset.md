@@ -43,7 +43,7 @@ ValueSet resources for FHIR.
 ``` r
 if (FALSE) { # \dontrun{
 roinc_valueset("LL1162-8")
-roinc_valueset("LL1162-8", expand = TRUE, metadata = FALSE)
+roinc_valueset("LL1162-8", expand = TRUE)
 roinc_valueset_validate("LG33055-1", "8867-4")
 } # }
 ```
