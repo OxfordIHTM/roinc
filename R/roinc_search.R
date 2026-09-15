@@ -10,10 +10,10 @@
 #' 
 #' @examples
 #' \dontrun{
-#' roinc_search_loincs()
-#' roinc_search_answerlists()
-#' roinc_search_parts()
-#' roinc_search_groups()
+#' roinc_search_loincs(query = "glucose")
+#' roinc_search_answerlists(query = "glucose")
+#' roinc_search_parts(query = "glucose")
+#' roinc_search_groups(query = "glucose")
 #' }
 #' 
 #' @rdname roinc_search
