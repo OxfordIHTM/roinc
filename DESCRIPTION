@@ -22,7 +22,8 @@ Imports:
 Suggests: 
     httptest2,
     spelling,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    withr
 Encoding: UTF-8
 Language: en-GB
 LazyData: true

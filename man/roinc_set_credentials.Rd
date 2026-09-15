@@ -16,7 +16,7 @@ Set LOINC API credentials
 }
 \examples{
 \dontrun{
-roinc_set_credentials
+roinc_set_credentials(username = "LOINC_USERNAME", password = "LOINC_PASSWORD")
 }
 
 }
