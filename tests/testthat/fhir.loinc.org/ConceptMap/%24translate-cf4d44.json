@@ -1,0 +1,1 @@
+{"resourceType":["Parameters"],"parameter":[{"name":["result"],"valueBoolean":[true]},{"name":["match"],"part":[{"name":["equivalence"],"valueCode":["relatedto"]},{"name":["concept"],"valueCoding":{"system":["http://radlex.org"],"code":["RPID479"],"display":["MR Head wo IV Contrast"]}},{"name":["source"],"valueUri":["http://loinc.org/cm/loinc-to-radlex"]}]}]}
