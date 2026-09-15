@@ -13,7 +13,6 @@
 #' @importFrom dplyr bind_rows
 #' @importFrom tidyr unnest_wider unnest
 #' @importFrom tibble tibble
-#' @importFrom rlang .data
-#'
+#' @importFrom rlang .data new_environment
 #'
 "_PACKAGE"
