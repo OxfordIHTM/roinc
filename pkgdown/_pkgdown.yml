@@ -72,7 +72,6 @@ reference:
   - title: Metadata
     contents:
     - roinc_get_metadata
-    - roinc_get_metadata_version
 
   - title: Download
     contents:

@@ -30,7 +30,7 @@ The [Logical Observation Identifiers Names and Codes or LOINC](https://loinc.org
 
 Please note that `{roinc}` is in early experimental development stage and functionalities and their corresponding syntax may change over time until we reach a more stable version.
 
-Currently, the package provides functions for:
+Currently, the package provides functions for all the LOINC API endpoints. These functions support:
 
 * interfacing with the [LOINC download API endpoints](https://loinc.org/kb/api/download);
 
@@ -59,12 +59,104 @@ pak::pak("OxfordIHTM/roinc")
 
 Once installed, `{roinc}` can then be loaded into an R session
 
-```r
+```{r load-roinc}
 # load package
 library(roinc)
 ```
 
 ## Usage
+
+### Authentication
+
+All requests to LOINC’s RESTful API endpoints require [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) using a valid LOINC username and password. LOINC logins are available by [registering on the website](https://loinc.org/join). Once you have a LOINC username and password, store these credentials as variables in your working environment by editing your `.Renviron` file and adding the following:
+
+```bash
+LOINC_USERNAME=YOUR_USERNAME
+LOINC_PASSWORD=YOUR_PASSWORD
+```
+
+`{roinc}` provides a convenience function that will allow you to set these variables in your current environment as follows:
+
+```R
+roinc_set_credentials(username = "YOUR_USERNAME", password = "YOUR_PASSWORD")
+```
+
+To check whether your authentication credentials have been set, use
+
+```R
+Sys.getenv("LOINC_USERNAME")
+Sys.getenv("LOINC_PASSWORD")
+```
+
+Your username and password should show up when you run these commands.
+
+Once these environment variables are set, all functions that interface and make requests against the LOINC API endpoints will use these credentials to authenticate.
+
+### Retrieve LOINC metadata
+
+Metadata on all the versions of LOINC can be retrieved via:
+
+```{r loinc-metadata, eval = FALSE}
+roinc_get_metadata()
+```
+
+which results in a `tibble` that includes information on the LOINC version, release date, number of LOINCs, and download URL sorted starting from the most current LOINC version (as shown below):
+
+```{r loinc-metadata-show, echo = FALSE}
+roinc_get_metadata()
+```
+
+If you would prefer to have the result in an unflattened list format as produced by `jsonlite::fromJSON()`, set the argument `tabular = FALSE` as follows:
+
+```{r loinc-metadata-list, eval = FALSE}
+roinc_get_metadata(tabular = FALSE)
+```
+
+which gives (showing only first 2 elements of list):
+
+```{r loinc-metadata-list-show, echo = FALSE}
+roinc_get_metadata(tabular = FALSE)[1:2]
+```
+
+If you would like to get the metadata of a specific LOINC version, for example the latest version which is 2.83, set the argument `version = "2.83"`:
+
+```{r loinc-metadata-version, eval = FALSE}
+roinc_get_metadata(version = "2.83")
+```
+
+and this will provide the following `tibble` output:
+
+```{r loinc-metadata-version-show, echo = FALSE}
+roinc_get_metadata(version = "2.83")
+```
+
+### Download LOINC primary artifact
+
+The LOINC primary release artifact can be downloaded. The `roinc_download()` functions allows for this download to be done programmatically as shown below:
+
+```{r loinc-download}
+roinc_download()
+```
+
+The result is the file path to the downloaded release artifact in zip format. The download is saved in the current working directory by default and the file is always named with the label `loinc_` followed by the label for the version. By default, the latest version is downloaded hence the full file path of the downloaded artifact is `loinc_latest.zip`.
+
+We can check that the download has indeed been stored by checking the existence of the specific file in the current directory:
+
+```{r loinc-download-check}
+file.exists("loinc_latest.zip")
+```
+
+If you want to download a specific version of the LOINC primary release artifact into a different directory, you can specify the `version` and the `directory` arguments. In the following example, LOINC version 2.80 will be downloaded in a temporary directory:
+
+```{r loinc-download-version}
+roinc_download(version = "2.80", directory = tempdir())
+```
+
+We then check whether version 2.80 has indeed been downloaded in the temporary directory:
+
+```{r loinc-download-version-check}
+file.exists(file.path(tempdir(), "loinc_2.80.zip"))
+```
 
 ## Citation
 

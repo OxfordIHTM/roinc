@@ -22,7 +22,7 @@ without_internet({
 with_mock_api({
   test_that("LOINC metadata for specific version is retrieved", {
     expect_equal(
-      roinc_get_metadata_version(version = "2.80", tabular = FALSE)$version[[1]],
+      roinc_get_metadata(version = "2.80", tabular = FALSE)$version[[1]],
       "2.80"
     )
   })
@@ -31,7 +31,7 @@ with_mock_api({
 without_internet({
   test_that("LOINC metadata version API request is made appropriately", {
     expect_GET(
-      roinc_get_metadata_version(version = "2.80"),
+      roinc_get_metadata(version = "2.80"),
       "https://loinc.regenstrief.org/api/v1/Loinc?version=2.80"
     )    
   })
