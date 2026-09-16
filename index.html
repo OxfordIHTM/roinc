@@ -72,7 +72,7 @@
 <h2 id="what-does-the-package-do">What does the package do?<a class="anchor" aria-label="anchor" href="#what-does-the-package-do"></a>
 </h2>
 <p>Please note that <a href="https://oxford-ihtm.io/roinc/">roinc</a> is in early experimental development stage and functionalities and their corresponding syntax may change over time until we reach a more stable version.</p>
-<p>Currently, the package provides functions for:</p>
+<p>Currently, the package provides functions for all the LOINC API endpoints. These functions support:</p>
 <ul>
 <li><p>interfacing with the <a href="https://loinc.org/kb/api/download" class="external-link">LOINC download API endpoints</a>;</p></li>
 <li><p>interfacing with the <a href="https://loinc.org/kb/api/search-api" class="external-link">LOINC search API endpoints</a>; and,</p></li>
@@ -100,12 +100,129 @@
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
+<div class="section level3">
+<h3 id="authentication">Authentication<a class="anchor" aria-label="anchor" href="#authentication"></a>
+</h3>
+<p>All requests to LOINC’s RESTful API endpoints require <a href="https://en.wikipedia.org/wiki/Basic_access_authentication" class="external-link">basic authentication</a> using a valid LOINC username and password. LOINC logins are available by <a href="https://loinc.org/join" class="external-link">registering on the website</a>. Once you have a LOINC username and password, store these credentials as variables in your working environment by editing your <code>.Renviron</code> file and adding the following:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="va">LOINC_USERNAME</span><span class="op">=</span>YOUR_USERNAME</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="va">LOINC_PASSWORD</span><span class="op">=</span>YOUR_PASSWORD</span></code></pre></div>
+<p><a href="https://oxford-ihtm.io/roinc/">roinc</a> provides a convenience function that will allow you to set these variables in your current environment as follows:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/roinc_set_credentials.html">roinc_set_credentials</a></span><span class="op">(</span>username <span class="op">=</span> <span class="st">"YOUR_USERNAME"</span>, password <span class="op">=</span> <span class="st">"YOUR_PASSWORD"</span><span class="op">)</span></span></code></pre></div>
+<p>To check whether your authentication credentials have been set, use</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"LOINC_USERNAME"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"LOINC_PASSWORD"</span><span class="op">)</span></span></code></pre></div>
+<p>Your username and password should show up when you run these commands.</p>
+<p>Once these environment variables are set, all functions that interface and make requests against the LOINC API endpoints will use these credentials to authenticate.</p>
+</div>
+<div class="section level3">
+<h3 id="retrieve-loinc-metadata">Retrieve LOINC metadata<a class="anchor" aria-label="anchor" href="#retrieve-loinc-metadata"></a>
+</h3>
+<p>Metadata on all the versions of LOINC can be retrieved via:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/roinc_get_metadata.html">roinc_get_metadata</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>which results in a <code>tibble</code> that includes information on the LOINC version, release date, number of LOINCs, and download URL sorted starting from the most current LOINC version (as shown below):</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 65 × 7</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co">#&gt;    version releaseDate         relmaVersion numberOfLoincs maxLoinc downloadUrl </span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;               &lt;chr&gt;                 &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;       </span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt;  1 2.83    2026-08-19T00:00:00 7.16                 112405 115803-9 https://loi…</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt;  2 2.82    2026-02-24T17:00:00 7.15                 109325 112587-1 https://loi…</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt;  3 2.81    2025-08-12T00:00:00 7.14                 108248 111472-7 https://loi…</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt;  4 2.80    2025-02-26T00:00:00 7.13                 104672 107378-2 https://loi…</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt;  5 2.79    2025-02-18T00:00:00 7.12                 104584 107378-2 https://loi…</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt;  6 2.78    2024-08-06T00:00:00 7.11                 104054 106413-8 https://loi…</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt;  7 2.77    2024-02-27T00:00:00 7.10                 102465 104478-3 https://loi…</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt;  8 2.76    2023-09-18T00:00:00 7.9                  101632 103542-7 https://loi…</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt;  9 2.75    2023-08-15T00:00:00 7.8                  101632 103542-7 https://loi…</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; 10 2.74    2023-02-22T00:00:00 7.7                   99687 101582-5 https://loi…</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 1 more variable: downloadMD5Hash &lt;chr&gt;</span></span></code></pre></div>
+<p>If you would prefer to have the result in an unflattened list format as produced by <code><a href="https://jeroen.r-universe.dev/jsonlite/reference/fromJSON.html" class="external-link">jsonlite::fromJSON()</a></code>, set the argument <code>tabular = FALSE</code> as follows:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/roinc_get_metadata.html">roinc_get_metadata</a></span><span class="op">(</span>tabular <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<p>which gives (showing only first 2 elements of list):</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">#&gt; [[1]]$version</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co">#&gt; [1] "2.83"</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co">#&gt; [[1]]$releaseDate</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co">#&gt; [1] "2026-08-19T00:00:00"</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co">#&gt; [[1]]$relmaVersion</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="co">#&gt; [1] "7.16"</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="co">#&gt; [[1]]$numberOfLoincs</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="co">#&gt; [1] 112405</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="co">#&gt; [[1]]$maxLoinc</span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="co">#&gt; [1] "115803-9"</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="co">#&gt; [[1]]$downloadUrl</span></span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="co">#&gt; [1] "https://loinc.regenstrief.org/api/v1/Loinc/Download?version=2.83"</span></span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a><span class="co">#&gt; [[1]]$downloadMD5Hash</span></span>
+<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a><span class="co">#&gt; [1] "057ddf203164705d5a4c3604257060a4"</span></span>
+<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a><span class="co">#&gt; [[2]]$version</span></span>
+<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a><span class="co">#&gt; [1] "2.82"</span></span>
+<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a><span class="co">#&gt; [[2]]$releaseDate</span></span>
+<span id="cb10-29"><a href="#cb10-29" tabindex="-1"></a><span class="co">#&gt; [1] "2026-02-24T17:00:00"</span></span>
+<span id="cb10-30"><a href="#cb10-30" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-31"><a href="#cb10-31" tabindex="-1"></a><span class="co">#&gt; [[2]]$relmaVersion</span></span>
+<span id="cb10-32"><a href="#cb10-32" tabindex="-1"></a><span class="co">#&gt; [1] "7.15"</span></span>
+<span id="cb10-33"><a href="#cb10-33" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-34"><a href="#cb10-34" tabindex="-1"></a><span class="co">#&gt; [[2]]$numberOfLoincs</span></span>
+<span id="cb10-35"><a href="#cb10-35" tabindex="-1"></a><span class="co">#&gt; [1] 109325</span></span>
+<span id="cb10-36"><a href="#cb10-36" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-37"><a href="#cb10-37" tabindex="-1"></a><span class="co">#&gt; [[2]]$maxLoinc</span></span>
+<span id="cb10-38"><a href="#cb10-38" tabindex="-1"></a><span class="co">#&gt; [1] "112587-1"</span></span>
+<span id="cb10-39"><a href="#cb10-39" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-40"><a href="#cb10-40" tabindex="-1"></a><span class="co">#&gt; [[2]]$downloadUrl</span></span>
+<span id="cb10-41"><a href="#cb10-41" tabindex="-1"></a><span class="co">#&gt; [1] "https://loinc.regenstrief.org/api/v1/Loinc/Download?version=2.82"</span></span>
+<span id="cb10-42"><a href="#cb10-42" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-43"><a href="#cb10-43" tabindex="-1"></a><span class="co">#&gt; [[2]]$downloadMD5Hash</span></span>
+<span id="cb10-44"><a href="#cb10-44" tabindex="-1"></a><span class="co">#&gt; [1] "1976936e2232d20cfcef8c9ac528c6f9"</span></span></code></pre></div>
+<p>If you would like to get the metadata of a specific LOINC version, for example the latest version which is 2.83, set the argument <code>version = "2.83"</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/roinc_get_metadata.html">roinc_get_metadata</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"2.83"</span><span class="op">)</span></span></code></pre></div>
+<p>and this will provide the following <code>tibble</code> output:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 7</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co">#&gt;   version releaseDate         relmaVersion numberOfLoincs maxLoinc downloadUrl  </span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;               &lt;chr&gt;                 &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;        </span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#&gt; 1 2.83    2026-08-19T00:00:00 7.16                 112405 115803-9 https://loin…</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co">#&gt; # ℹ 1 more variable: downloadMD5Hash &lt;chr&gt;</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="download-loinc-primary-artifact">Download LOINC primary artifact<a class="anchor" aria-label="anchor" href="#download-loinc-primary-artifact"></a>
+</h3>
+<p>The LOINC primary release artifact can be downloaded. The <code><a href="reference/roinc_download.html">roinc_download()</a></code> functions allows for this download to be done programmatically as shown below:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/roinc_download.html">roinc_download</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "loinc_latest.zip"</span></span></code></pre></div>
+<p>The result is the file path to the downloaded release artifact in zip format. The download is saved in the current working directory by default and the file is always named with the label <code>loinc_</code> followed by the label for the version. By default, the latest version is downloaded hence the full file path of the downloaded artifact is <code>loinc_latest.zip</code>.</p>
+<p>We can check that the download has indeed been stored by checking the existence of the specific file in the current directory:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="st">"loinc_latest.zip"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<p>If you want to download a specific version of the LOINC primary release artifact into a different directory, you can specify the <code>version</code> and the <code>directory</code> arguments. In the following example, LOINC version 2.80 will be downloaded in a temporary directory:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/roinc_download.html">roinc_download</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"2.80"</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "/tmp/RtmpC3GXOQ/loinc_2.80.zip"</span></span></code></pre></div>
+<p>We then check whether version 2.80 has indeed been downloaded in the temporary directory:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"loinc_2.80.zip"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>If you use the <a href="https://oxford-ihtm.io/roinc/">roinc</a> package in your work, please cite using the suggested citation provided by a call to the <code>citation</code> function as follows:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"roinc"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; To cite loinc in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>

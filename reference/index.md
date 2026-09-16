@@ -29,7 +29,6 @@
 ## Metadata
 
 - [`roinc_get_metadata()`](https://oxford-ihtm.io/roinc/reference/roinc_get_metadata.md)
-  [`roinc_get_metadata_version()`](https://oxford-ihtm.io/roinc/reference/roinc_get_metadata.md)
   : Get LOINC's primary release artifact download metadata
 
 ## Download

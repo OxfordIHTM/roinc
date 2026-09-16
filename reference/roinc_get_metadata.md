@@ -5,12 +5,15 @@ Get LOINC's primary release artifact download metadata
 ## Usage
 
 ``` r
-roinc_get_metadata(tabular = TRUE)
-
-roinc_get_metadata_version(version = NULL, tabular = TRUE)
+roinc_get_metadata(version = NULL, tabular = TRUE)
 ```
 
 ## Arguments
+
+- version:
+
+  A string value for LOINC version identifier to specify which versions
+  of concepts in LOINC to retrieve.
 
 - tabular:
 
@@ -18,11 +21,6 @@ roinc_get_metadata_version(version = NULL, tabular = TRUE)
   converted to a
   [tibble](https://tibble.tidyverse.org/reference/tibble.html). If
   FALSE, response is kept as a [list](https://rdrr.io/r/base/list.html).
-
-- version:
-
-  A string value for LOINC version identifier to specify which versions
-  of concepts in LOINC to retrieve.
 
 ## Value
 

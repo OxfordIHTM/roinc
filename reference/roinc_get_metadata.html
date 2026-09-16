@@ -45,24 +45,22 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">roinc_get_metadata</span><span class="op">(</span>tabular <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">roinc_get_metadata_version</span><span class="op">(</span>version <span class="op">=</span> <span class="cn">NULL</span>, tabular <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">roinc_get_metadata</span><span class="op">(</span>version <span class="op">=</span> <span class="cn">NULL</span>, tabular <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-tabular">tabular<a class="anchor" aria-label="anchor" href="#arg-tabular"></a></dt>
+<dl><dt id="arg-version">version<a class="anchor" aria-label="anchor" href="#arg-version"></a></dt>
+<dd><p>A string value for LOINC version identifier to specify which
+versions of concepts in LOINC to retrieve.</p></dd>
+
+
+<dt id="arg-tabular">tabular<a class="anchor" aria-label="anchor" href="#arg-tabular"></a></dt>
 <dd><p>Logical. Should response be tabular? If TRUE (default),
 response is converted to a <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a>. If FALSE, response is kept
 as a <a href="https://rdrr.io/r/base/list.html" class="external-link">list</a>.</p></dd>
-
-
-<dt id="arg-version">version<a class="anchor" aria-label="anchor" href="#arg-version"></a></dt>
-<dd><p>A string value for LOINC version identifier to specify which
-versions of concepts in LOINC to retrieve.</p></dd>
 
 </dl></div>
     <div class="section level2">
