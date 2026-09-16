@@ -6,8 +6,11 @@ ConceptMap
 FHIR
 LOINC
 LOINC's
+LOINCs
+LOINC’s
 Lifecycle
 ORCID
+RESTful
 ValueSet
 WIP
 artifact
@@ -15,5 +18,6 @@ asc
 desc
 iHealth
 tibble
+unflattened
 yaml
 ’s

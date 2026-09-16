@@ -2,20 +2,17 @@
 % Please edit documentation in R/roinc_get_metadata.R
 \name{roinc_get_metadata}
 \alias{roinc_get_metadata}
-\alias{roinc_get_metadata_version}
 \title{Get LOINC's primary release artifact download metadata}
 \usage{
-roinc_get_metadata(tabular = TRUE)
-
-roinc_get_metadata_version(version = NULL, tabular = TRUE)
+roinc_get_metadata(version = NULL, tabular = TRUE)
 }
 \arguments{
+\item{version}{A string value for LOINC version identifier to specify which
+versions of concepts in LOINC to retrieve.}
+
 \item{tabular}{Logical. Should response be tabular? If TRUE (default),
 response is converted to a \link[tibble:tibble]{tibble}. If FALSE, response is kept
 as a \link{list}.}
-
-\item{version}{A string value for LOINC version identifier to specify which
-versions of concepts in LOINC to retrieve.}
 }
 \value{
 A \link{list} or \link[tibble:tibble]{tibble} of the metadata for the current and for every
