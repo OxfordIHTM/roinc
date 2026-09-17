@@ -239,10 +239,10 @@ will be downloaded in a temporary directory:
 
 ``` r
 roinc_download(version = "2.80", directory = tempdir())
-#> [1] "/tmp/RtmpC3GXOQ/loinc_2.80.zip"
+#> [1] "/tmp/Rtmp8Hw9T7/loinc_2.80.zip"
 ```
 
-We then check whether version 2.80 has indeed been downloaded in the
+We can check whether version 2.80 has indeed been downloaded in the
 temporary directory:
 
 ``` r
@@ -250,10 +250,548 @@ file.exists(file.path(tempdir(), "loinc_2.80.zip"))
 #> [1] TRUE
 ```
 
+### Search LOINC database
+
+You can search the extensive LOINC database using the `roinc_search_*()`
+set of functions. Each of these functions searches within a specific
+scope of the LOINC database. These scopes can either be the *LOINCs*,
+the *LOINC answer lists*, the *LOINC parts*, or the *LOINC groups*. For
+example, if you want to look up *glucose* from the LOINCs search, that
+can be done as follows:
+
+``` r
+roinc_search_loincs(query = "glucose")
+```
+
+which gives the following `tibble` of search results:
+
+``` r
+roinc_search_loincs("glucose")
+#> # A tibble: 50 × 47
+#>    LOINC_NUM COMPONENT     PROPERTY TIME_ASPCT SYSTEM SCALE_TYP METHOD_TYP CLASS
+#>    <chr>     <chr>         <chr>    <chr>      <chr>  <chr>     <chr>      <chr>
+#>  1 97510-2   Glucose meas… NFr      RptPeriod  Inter… Qn        Calculated CHEM 
+#>  2 2352-3    Glucose CSF/… RelMCnc  Pt         Plas+… Qn        <NA>       CHEM 
+#>  3 25670-1   Glucose^30M … MCnc     Pt         Urine  Qn        <NA>       CHAL 
+#>  4 25675-0   Glucose^4H p… MCnc     Pt         Urine  Qn        <NA>       CHAL 
+#>  5 26545-4   Glucose^6H p… MCnc     Pt         Urine  Qn        <NA>       CHAL 
+#>  6 26540-5   Glucose^3H p… MCnc     Pt         Urine  Qn        <NA>       CHAL 
+#>  7 26542-1   Glucose^5H p… MCnc     Pt         Urine  Qn        <NA>       CHAL 
+#>  8 18296-4   Glucose^post… Imp      Pt         Ser/P… Nom       <NA>       CHAL 
+#>  9 47622-6   Glucose^pre … SCnc     Pt         Ser/P… Qn        <NA>       CHAL 
+#> 10 108027-4  Glucose       {Measur… -          Urine  -         <NA>       LABO…
+#> # ℹ 40 more rows
+#> # ℹ 39 more variables: VersionLastChanged <chr>, CHNG_TYPE <chr>,
+#> #   DefinitionDescription <chr>, STATUS <chr>, CLASSTYPE <int>, FORMULA <lgl>,
+#> #   ExampleAnswers <chr>, SURVEY_QUEST_TEXT <chr>, SURVEY_QUEST_SRC <lgl>,
+#> #   UNITSREQUIRED <chr>, RELATEDNAMES2 <chr>, SHORTNAME <chr>, ORDER_OBS <chr>,
+#> #   HL7_FIELD_SUBFIELD_ID <lgl>, EXTERNAL_COPYRIGHT_NOTICE <lgl>,
+#> #   EXAMPLE_UNITS <chr>, LONG_COMMON_NAME <chr>, EXAMPLE_UCUM_UNITS <chr>, …
+```
+
+By default, `roinc_search_loincs()` (and the other `roinc_search_*()`
+functions) returns a `tibble` of the first 50 rows of the search results
+with 47 variables/fields. These results can be customised by specifying
+the arguments for the *number of rows to return*, the *page of results
+to return*, the *variable/field to sort the results on*, and the
+*language for the returned results*.
+
+### LOINC terminology services
+
+The LOINC database can be accessed through a terminology service defined
+by [HL7’s FHIR](https://hl7.org/fhir/) standard. The API offers
+endpoints for three FHIR resources: *code system*, *value set*, and
+*concept map*. It also has a set of endpoints for *questionnaire*
+resources to LOINC’s wealth of standard assessments and survey content
+including all child concepts (i.e. questions) and answer lists of a
+given assessment.
+
+#### Code system
+
+To get properties available for LOINC as a CodeSystem, use the following
+command:
+
+``` r
+roinc_codesystem()
+```
+
+which returns:
+
+    #> # A tibble: 15 × 7
+    #>    resourceType id             meta$meta type  total link$relation entry$fullUrl
+    #>    <chr>        <chr>          <chr>     <chr> <int> <chr>         <chr>        
+    #>  1 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #>  2 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #>  3 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #>  4 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #>  5 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #>  6 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #>  7 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #>  8 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #>  9 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #> 10 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #> 11 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #> 12 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #> 13 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #> 14 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #> 15 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+    #> # ℹ 27 more variables: link$url <chr>, entry$resourceType <chr>, $id <chr>,
+    #> #   $versionId <chr>, $lastUpdated <chr>, $system <chr>, $code <chr>,
+    #> #   $url <chr>, $identifier <list>, $version <chr>, $name <chr>, $title <chr>,
+    #> #   $status <chr>, $experimental <lgl>, $date <chr>, $publisher <chr>,
+    #> #   $contact <list>, $description <chr>, $copyright <chr>,
+    #> #   $caseSensitive <lgl>, $valueSet <chr>, $hierarchyMeaning <chr>,
+    #> #   $compositional <lgl>, $versionNeeded <lgl>, $content <chr>, $count <int>, …
+
+To get information on an individual LOINC term, Part, Answer List, or
+Answer string, use `roinc_codesystem_lookup()`. For example, using the
+code `4544-3` for hematocrit:
+
+``` r
+roinc_codesystem_lookup(code = "4544-3")
+```
+
+which returns an unflattened list format as produced by
+`jsonlite::fromJSON()`.
+
+To get a specific piece of information, specify the argument for
+`property` using any of the different variables/fields available from
+the system. For example, for the code `4544-3` for hematocrit and
+retrieving information on which version of LOINC this was first
+released:
+
+``` r
+roinc_codesystem_lookup(code = "4544-3", property = "VersionFirstReleased")
+#> $resourceType
+#> [1] "Parameters"
+#> 
+#> $parameter
+#> $parameter[[1]]
+#> $parameter[[1]]$name
+#> [1] "code"
+#> 
+#> $parameter[[1]]$valueCode
+#> [1] "4544-3"
+#> 
+#> 
+#> $parameter[[2]]
+#> $parameter[[2]]$name
+#> [1] "system"
+#> 
+#> $parameter[[2]]$valueString
+#> [1] "http://loinc.org"
+#> 
+#> 
+#> $parameter[[3]]
+#> $parameter[[3]]$name
+#> [1] "name"
+#> 
+#> $parameter[[3]]$valueString
+#> [1] "LOINC"
+#> 
+#> 
+#> $parameter[[4]]
+#> $parameter[[4]]$name
+#> [1] "version"
+#> 
+#> $parameter[[4]]$valueString
+#> [1] "2.83"
+#> 
+#> 
+#> $parameter[[5]]
+#> $parameter[[5]]$name
+#> [1] "display"
+#> 
+#> $parameter[[5]]$valueString
+#> [1] "Hematocrit [Volume Fraction] of Blood by Automated count"
+#> 
+#> 
+#> $parameter[[6]]
+#> $parameter[[6]]$name
+#> [1] "status"
+#> 
+#> $parameter[[6]]$valueCode
+#> [1] "active"
+#> 
+#> 
+#> $parameter[[7]]
+#> $parameter[[7]]$name
+#> [1] "property"
+#> 
+#> $parameter[[7]]$part
+#> $parameter[[7]]$part[[1]]
+#> $parameter[[7]]$part[[1]]$name
+#> [1] "code"
+#> 
+#> $parameter[[7]]$part[[1]]$valueCode
+#> [1] "VersionFirstReleased"
+#> 
+#> 
+#> $parameter[[7]]$part[[2]]
+#> $parameter[[7]]$part[[2]]$name
+#> [1] "value"
+#> 
+#> $parameter[[7]]$part[[2]]$valueString
+#> [1] "1.0"
+```
+
+#### Value sets
+
+FHIR’s *ValueSet* resource specifies a set of codes drawn from one or
+more code systems. In LOINC’s case, three main types of value sets are
+defined:
+
+- Broadly useful collections of LOINC terms
+- Answer Lists, e.g. LL4700-2
+- LOINC Groups, e.g. LG32763-1
+
+To return a value set definition, `roinc_valueset()` can be used. For
+example, to get the value set definition for answer list *LL1162-8*:
+
+``` r
+roinc_valueset(valueset = "LL1162-8")
+```
+
+which returns
+
+    #> $resourceType
+    #> [1] "Bundle"
+    #> 
+    #> $id
+    #> [1] "d514bab2-ad0c-4ff8-9f5a-f8345271298b"
+    #> 
+    #> $meta
+    #> $meta$lastUpdated
+    #> [1] "2026-09-17T11:59:03.836+00:00"
+    #> 
+    #> 
+    #> $type
+    #> [1] "searchset"
+    #> 
+    #> $total
+    #> [1] 1
+    #> 
+    #> $link
+    #> $link[[1]]
+    #> $link[[1]]$relation
+    #> [1] "self"
+    #> 
+    #> $link[[1]]$url
+    #> [1] "https://fhir.loinc.org/ValueSet/?url=http://loinc.org/vs/LL1162-8"
+    #> 
+    #> 
+    #> 
+    #> $entry
+    #> $entry[[1]]
+    #> $entry[[1]]$fullUrl
+    #> [1] "https://fhir.loinc.org/ValueSet/bee38a9a-595c-4904-861a-84ce8034369f"
+    #> 
+    #> $entry[[1]]$resource
+    #> $entry[[1]]$resource$resourceType
+    #> [1] "ValueSet"
+    #> 
+    #> $entry[[1]]$resource$id
+    #> [1] "bee38a9a-595c-4904-861a-84ce8034369f"
+    #> 
+    #> $entry[[1]]$resource$meta
+    #> $entry[[1]]$resource$meta$versionId
+    #> [1] "1"
+    #> 
+    #> $entry[[1]]$resource$meta$lastUpdated
+    #> [1] "2026-08-19T00:00:00+00:00"
+    #> 
+    #> $entry[[1]]$resource$meta$tag
+    #> $entry[[1]]$resource$meta$tag[[1]]
+    #> $entry[[1]]$resource$meta$tag[[1]]$system
+    #> [1] "originalId"
+    #> 
+    #> $entry[[1]]$resource$meta$tag[[1]]$code
+    #> [1] "7e4ee1c6-a158-4654-937a-e3205327786e"
+    #> 
+    #> 
+    #> 
+    #> 
+    #> $entry[[1]]$resource$url
+    #> [1] "http://loinc.org/vs/LL1162-8"
+    #> 
+    #> $entry[[1]]$resource$identifier
+    #> $entry[[1]]$resource$identifier[[1]]
+    #> $entry[[1]]$resource$identifier[[1]]$system
+    #> [1] "urn:ietf:rfc:3986"
+    #> 
+    #> $entry[[1]]$resource$identifier[[1]]$value
+    #> [1] "urn:oid:1.3.6.1.4.1.12009.10.1.333"
+    #> 
+    #> 
+    #> 
+    #> $entry[[1]]$resource$version
+    #> [1] "2.83"
+    #> 
+    #> $entry[[1]]$resource$name
+    #> [1] "Quantity (5 answers, ord)"
+    #> 
+    #> $entry[[1]]$resource$status
+    #> [1] "active"
+    #> 
+    #> $entry[[1]]$resource$publisher
+    #> [1] "Regenstrief Institute, Inc."
+    #> 
+    #> $entry[[1]]$resource$contact
+    #> $entry[[1]]$resource$contact[[1]]
+    #> $entry[[1]]$resource$contact[[1]]$name
+    #> [1] "Regenstrief Institute, Inc."
+    #> 
+    #> $entry[[1]]$resource$contact[[1]]$telecom
+    #> $entry[[1]]$resource$contact[[1]]$telecom[[1]]
+    #> $entry[[1]]$resource$contact[[1]]$telecom[[1]]$system
+    #> [1] "url"
+    #> 
+    #> $entry[[1]]$resource$contact[[1]]$telecom[[1]]$value
+    #> [1] "http://loinc.org"
+    #> 
+    #> 
+    #> 
+    #> 
+    #> 
+    #> $entry[[1]]$resource$copyright
+    #> [1] "This material contains content from LOINC (http://loinc.org). LOINC is copyright Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee and is available at no cost under the license at http://loinc.org/license. LOINC® is a registered United States trademark of Regenstrief Institute, Inc."
+
+To get the list of terms in a value set, specify the argument
+`expand = TRUE` as follows:
+
+``` r
+roinc_valueset(valueset = "LL1162-8", expand = TRUE)
+```
+
+which returns
+
+    #> $resourceType
+    #> [1] "ValueSet"
+    #> 
+    #> $id
+    #> [1] "bee38a9a-595c-4904-861a-84ce8034369f"
+    #> 
+    #> $url
+    #> [1] "http://loinc.org/vs/LL1162-8"
+    #> 
+    #> $identifier
+    #> $identifier[[1]]
+    #> $identifier[[1]]$system
+    #> [1] "urn:ietf:rfc:3986"
+    #> 
+    #> $identifier[[1]]$value
+    #> [1] "urn:oid:1.3.6.1.4.1.12009.10.1.333"
+    #> 
+    #> 
+    #> 
+    #> $version
+    #> [1] "2.83"
+    #> 
+    #> $name
+    #> [1] "Quantity (5 answers, ord)"
+    #> 
+    #> $status
+    #> [1] "active"
+    #> 
+    #> $publisher
+    #> [1] "Regenstrief Institute, Inc."
+    #> 
+    #> $contact
+    #> $contact[[1]]
+    #> $contact[[1]]$name
+    #> [1] "Regenstrief Institute, Inc."
+    #> 
+    #> $contact[[1]]$telecom
+    #> $contact[[1]]$telecom[[1]]
+    #> $contact[[1]]$telecom[[1]]$system
+    #> [1] "url"
+    #> 
+    #> $contact[[1]]$telecom[[1]]$value
+    #> [1] "http://loinc.org"
+    #> 
+    #> 
+    #> 
+    #> 
+    #> 
+    #> $copyright
+    #> [1] "This material contains content from LOINC (http://loinc.org). LOINC is copyright Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee and is available at no cost under the license at http://loinc.org/license. LOINC® is a registered United States trademark of Regenstrief Institute, Inc."
+    #> 
+    #> $compose
+    #> $compose$include
+    #> $compose$include[[1]]
+    #> $compose$include[[1]]$system
+    #> [1] "http://loinc.org"
+    #> 
+    #> $compose$include[[1]]$concept
+    #> $compose$include[[1]]$concept[[1]]
+    #> $compose$include[[1]]$concept[[1]]$code
+    #> [1] "LA137-2"
+    #> 
+    #> $compose$include[[1]]$concept[[1]]$display
+    #> [1] "None"
+    #> 
+    #> 
+    #> $compose$include[[1]]$concept[[2]]
+    #> $compose$include[[1]]$concept[[2]]$code
+    #> [1] "LA15679-6"
+    #> 
+    #> $compose$include[[1]]$concept[[2]]$display
+    #> [1] "Rare"
+    #> 
+    #> 
+    #> $compose$include[[1]]$concept[[3]]
+    #> $compose$include[[1]]$concept[[3]]$code
+    #> [1] "LA15680-4"
+    #> 
+    #> $compose$include[[1]]$concept[[3]]$display
+    #> [1] "Few"
+    #> 
+    #> 
+    #> $compose$include[[1]]$concept[[4]]
+    #> $compose$include[[1]]$concept[[4]]$code
+    #> [1] "LA15681-2"
+    #> 
+    #> $compose$include[[1]]$concept[[4]]$display
+    #> [1] "Many"
+    #> 
+    #> 
+    #> $compose$include[[1]]$concept[[5]]
+    #> $compose$include[[1]]$concept[[5]]$code
+    #> [1] "LA6751-7"
+    #> 
+    #> $compose$include[[1]]$concept[[5]]$display
+    #> [1] "Moderate"
+    #> 
+    #> 
+    #> 
+    #> 
+    #> 
+    #> 
+    #> $expansion
+    #> $expansion$id
+    #> [1] "7de6bbc4-2d6b-4c60-a48b-215d0c63b288"
+    #> 
+    #> $expansion$identifier
+    #> [1] "3339644d-ef3e-4818-a5c9-ca30430abd40"
+    #> 
+    #> $expansion$timestamp
+    #> [1] "2026-09-17T11:59:04+00:00"
+    #> 
+    #> $expansion$total
+    #> [1] 5
+    #> 
+    #> $expansion$offset
+    #> [1] 0
+    #> 
+    #> $expansion$parameter
+    #> $expansion$parameter[[1]]
+    #> $expansion$parameter[[1]]$name
+    #> [1] "offset"
+    #> 
+    #> $expansion$parameter[[1]]$valueInteger
+    #> [1] 0
+    #> 
+    #> 
+    #> $expansion$parameter[[2]]
+    #> $expansion$parameter[[2]]$name
+    #> [1] "count"
+    #> 
+    #> $expansion$parameter[[2]]$valueInteger
+    #> [1] 100
+    #> 
+    #> 
+    #> 
+    #> $expansion$contains
+    #> $expansion$contains[[1]]
+    #> $expansion$contains[[1]]$system
+    #> [1] "http://loinc.org"
+    #> 
+    #> $expansion$contains[[1]]$code
+    #> [1] "LA137-2"
+    #> 
+    #> $expansion$contains[[1]]$display
+    #> [1] "None"
+    #> 
+    #> 
+    #> $expansion$contains[[2]]
+    #> $expansion$contains[[2]]$system
+    #> [1] "http://loinc.org"
+    #> 
+    #> $expansion$contains[[2]]$code
+    #> [1] "LA15679-6"
+    #> 
+    #> $expansion$contains[[2]]$display
+    #> [1] "Rare"
+    #> 
+    #> 
+    #> $expansion$contains[[3]]
+    #> $expansion$contains[[3]]$system
+    #> [1] "http://loinc.org"
+    #> 
+    #> $expansion$contains[[3]]$code
+    #> [1] "LA15680-4"
+    #> 
+    #> $expansion$contains[[3]]$display
+    #> [1] "Few"
+    #> 
+    #> 
+    #> $expansion$contains[[4]]
+    #> $expansion$contains[[4]]$system
+    #> [1] "http://loinc.org"
+    #> 
+    #> $expansion$contains[[4]]$code
+    #> [1] "LA15681-2"
+    #> 
+    #> $expansion$contains[[4]]$display
+    #> [1] "Many"
+    #> 
+    #> 
+    #> $expansion$contains[[5]]
+    #> $expansion$contains[[5]]$system
+    #> [1] "http://loinc.org"
+    #> 
+    #> $expansion$contains[[5]]$code
+    #> [1] "LA6751-7"
+    #> 
+    #> $expansion$contains[[5]]$display
+    #> [1] "Moderate"
+
+To determine if a term is in a given ValueSet,
+`roinc_valueset_validate()` can be used. For example, to determine if
+the LOINC term `8867-4` is in the LOINC group `LG33055-1`:
+
+``` r
+roinc_valueset_validate(valueset = "LG33055-1", code = "8867-4")
+```
+
+which returns:
+
+    #> $resourceType
+    #> [1] "Parameters"
+    #> 
+    #> $parameter
+    #> $parameter[[1]]
+    #> $parameter[[1]]$name
+    #> [1] "result"
+    #> 
+    #> $parameter[[1]]$valueBoolean
+    #> [1] TRUE
+    #> 
+    #> 
+    #> $parameter[[2]]
+    #> $parameter[[2]]$name
+    #> [1] "display"
+    #> 
+    #> $parameter[[2]]$valueString
+    #> [1] "Heart rate"
+
+In the result, the `valueBoolean` returns a value `TRUE` which means
+that the term is included in the specified value set.
+
 ## Citation
 
 If you use the `{roinc}` package in your work, please cite using the
-suggested citation provided by a call to the `citation` function as
+suggested citation provided by a call to the `citation()` function as
 follows:
 
 ``` r

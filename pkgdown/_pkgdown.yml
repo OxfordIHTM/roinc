@@ -59,6 +59,7 @@ reference:
     contents:
     - roinc_codesystem
     - roinc_valueset
+    - roinc_valueset_validate
     - roinc_concept_map
     - roinc_questionnaire
 

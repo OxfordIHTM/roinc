@@ -65,28 +65,44 @@ roinc_codesystem_lookup <- function(code,
     httr2::req_url_query(
       system = "http://loinc.org",
       code = code
-    ) |>
+    )
+
+  ## Add property and version queries ----
+  if (!is.null(property)) {
+    req_url <- paste0(
+      file.path(base_url_terminology, "CodeSystem", "$lookup"),
+      "?system=http://loinc.org&code=", code
+    )
+
+    if (!is.null(version)) {
+      req_url <- paste0(req_url, "&version=", version)
+    }
+    
+    property_query <- paste0("&&property=", property, collapse = "")
+
+    req_url <- paste0(req_url, property_query)
+
+    req <- httr2::request(base_url = req_url)
+  } else {
+    if (!is.null(version)) {
+      req <- req |>
+        httr2::req_url_query(version = version)
+    }
+  }
+
+  ## Authenticate ----
+  req <- req |>
     httr2::req_auth_basic(
       username = Sys.getenv("LOINC_USERNAME"),
       password = Sys.getenv("LOINC_PASSWORD")
     )
-
-  if (!is.null(property)) {
-    req <- req |>
-      httr2::req_url_query(
-        "&property" = property, .multi = "explode"
-      )
-  }
-
-  if (!is.null(version)) {
-    req <- req |>
-      httr2::req_url_query(version = version)
-  }
   
+  ## Perform request ----
   resp <- req |>
     httr2::req_perform() |>
     httr2::resp_body_json()
 
+  ## Return response ----
   resp
 }
 

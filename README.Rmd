@@ -152,15 +152,109 @@ If you want to download a specific version of the LOINC primary release artifact
 roinc_download(version = "2.80", directory = tempdir())
 ```
 
-We then check whether version 2.80 has indeed been downloaded in the temporary directory:
+We can check whether version 2.80 has indeed been downloaded in the temporary directory:
 
 ```{r loinc-download-version-check}
 file.exists(file.path(tempdir(), "loinc_2.80.zip"))
 ```
 
+### Search LOINC database
+
+You can search the extensive LOINC database using the `roinc_search_*()` set of functions. Each of these functions searches within a specific scope of the LOINC database. These scopes can either be the *LOINCs*, the *LOINC answer lists*, the *LOINC parts*, or the *LOINC groups*. For example, if you want to look up *glucose* from the LOINCs search, that can be done as follows:
+
+```{r loinc-search, eval = FALSE}
+roinc_search_loincs(query = "glucose")
+```
+
+which gives the following `tibble` of search results:
+
+```{r loinc-search-show}
+roinc_search_loincs("glucose")
+```
+
+By default, `roinc_search_loincs()` (and the other `roinc_search_*()` functions) returns a `tibble` of the first 50 rows of the search results with 47 variables/fields. These results can be customised by specifying the arguments for the *number of rows to return*, the *page of results to return*, the *variable/field to sort the results on*, and the *language for the returned results*.
+
+### LOINC terminology services
+
+The LOINC database can be accessed through a terminology service defined by [HL7's FHIR](https://hl7.org/fhir/) standard. The API offers endpoints for three FHIR resources: *code system*, *value set*, and *concept map*. It also has a set of endpoints for *questionnaire* resources to LOINC's wealth of standard assessments and survey content including all child concepts (i.e. questions) and answer lists of a given assessment.
+
+#### Code system
+
+To get properties available for LOINC as a CodeSystem, use the following command:
+
+```{r loinc-codesysem, eval = FALSE}
+roinc_codesystem()
+```
+
+which returns:
+
+```{r loinc-codesystem-show, echo = FALSE}
+roinc_codesystem()
+```
+
+To get information on an individual LOINC term, Part, Answer List, or Answer string, use `roinc_codesystem_lookup()`. For example, using the code `4544-3` for hematocrit:
+
+```{r loinc-codesystem-lookup, eval = FALSE}
+roinc_codesystem_lookup(code = "4544-3")
+```
+
+which returns an unflattened list format as produced by `jsonlite::fromJSON()`.
+
+To get a specific piece of information, specify the argument for `property` using any of the different variables/fields available from the system. For example, for the code `4544-3` for hematocrit and retrieving information on which version of LOINC this was first released:
+
+```{r loinc-codesystem-lookup-property}
+roinc_codesystem_lookup(code = "4544-3", property = "VersionFirstReleased")
+```
+
+#### Value sets
+
+FHIR’s *ValueSet* resource specifies a set of codes drawn from one or more code systems. In LOINC’s case, three main types of value sets are defined:
+
+* Broadly useful collections of LOINC terms
+* Answer Lists, e.g. LL4700-2
+* LOINC Groups, e.g. LG32763-1
+
+To return a value set definition, `roinc_valueset()` can be used. For example, to get the value set definition for answer list *LL1162-8*:
+
+```{r loinc-valueset, eval = FALSE}
+roinc_valueset(valueset = "LL1162-8")
+```
+
+which returns
+
+```{r loinc-valueset-show, echo = FALSE}
+roinc_valueset(valueset = "LL1162-8")
+```
+
+To get the list of terms in a value set, specify the argument `expand = TRUE` as follows:
+
+```{r loinc-valueset-expand, eval = FALSE}
+roinc_valueset(valueset = "LL1162-8", expand = TRUE)
+```
+
+which returns
+
+```{r loinc-valueset-expand-show, echo = FALSE}
+roinc_valueset(valueset = "LL1162-8", expand = TRUE)
+```
+
+To determine if a term is in a given ValueSet, `roinc_valueset_validate()` can be used. For example, to determine if the LOINC term `8867-4` is in the LOINC group `LG33055-1`:
+
+```{r loinc-valueset-validate, eval = FALSE}
+roinc_valueset_validate(valueset = "LG33055-1", code = "8867-4")
+```
+
+which returns:
+
+```{r loinc-valueset-validate-show, echo = FALSE}
+roinc_valueset_validate(valueset = "LG33055-1", code = "8867-4")
+```
+
+In the result, the `valueBoolean` returns a value `TRUE` which means that the term is included in the specified value set.
+
 ## Citation
 
-If you use the `{roinc}` package in your work, please cite using the suggested citation provided by a call to the `citation` function as follows:
+If you use the `{roinc}` package in your work, please cite using the suggested citation provided by a call to the `citation()` function as follows:
 
 ```{r}
 citation("roinc")

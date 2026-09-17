@@ -4,6 +4,8 @@ CodeSystem
 Codecov
 ConceptMap
 FHIR
+FHIR’s
+HL
 LOINC
 LOINC's
 LOINCs
@@ -16,6 +18,7 @@ WIP
 artifact
 asc
 desc
+hematocrit
 iHealth
 tibble
 unflattened

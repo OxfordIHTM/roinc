@@ -49,7 +49,7 @@ without_internet({
   test_that("roinc_codesystem_lookup creates the appropriate request", {
     expect_GET(
       roinc_codesystem_lookup(code = "4544-3", property = "METHOD_TYP"),
-      "https://fhir.loinc.org/CodeSystem/%24lookup?system=http%3A%2F%2Floinc.org&code=4544-3&%26property=METHOD_TYP"
+      "https://fhir.loinc.org/CodeSystem/$lookup?system=http://loinc.org&code=4544-3&&property=METHOD_TYP"
     )
   })
 })
