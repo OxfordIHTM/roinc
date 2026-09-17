@@ -68,6 +68,7 @@ roinc_valueset <- function(valueset,
 
 #'
 #' @rdname roinc_valueset
+#' @export
 #' 
 
 roinc_valueset_validate <- function(valueset, code) {
