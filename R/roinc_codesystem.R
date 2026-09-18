@@ -19,6 +19,7 @@
 #' 
 
 roinc_codesystem <- function(tabular = TRUE) {
+  ## Create request ----
   req <- httr2::request(base_url = base_url_terminology) |>
     httr2::req_url_path_append("CodeSystem") |>
     httr2::req_url_query(url = "http://loinc.org") |>
@@ -27,9 +28,11 @@ roinc_codesystem <- function(tabular = TRUE) {
       password = Sys.getenv("LOINC_PASSWORD")
     )
   
+  ## Retrieve response ----
   resp <- httr2::req_perform(req) |>
     httr2::resp_body_json()
 
+  ## Tabularise ----
   if (tabular) {
     resp$meta <- tibble::tibble(meta = resp$meta) |>
       tidyr::unnest_longer(.data$meta)
@@ -49,6 +52,7 @@ roinc_codesystem <- function(tabular = TRUE) {
       dplyr::bind_rows()
   }
 
+  ## Return response ----
   resp
 }
 

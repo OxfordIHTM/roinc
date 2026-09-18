@@ -18,7 +18,8 @@
 #'   as a [list].
 #' @param property A string value or vector of string values for specific LOINC
 #'   code system property or properties to return in a lookup. The current list
-#'   of property codes that will return a result are found in <https://build.fhir.org/ig/HL7/termchangeset-ig/en/CodeSystem-roinc-property-cs.html>.
+#'   of property codes that will return a result are found in
+#'   <https://build.fhir.org/ig/HL7/termchangeset-ig/en/CodeSystem-roinc-property-cs.html>.
 #' @param version A string value for LOINC version identifier to specify which
 #'   versions of concepts in LOINC to retrieve.
 #' @param directory Directory path to save the LOINC primary release artifact

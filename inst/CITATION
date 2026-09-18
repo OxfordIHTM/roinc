@@ -4,6 +4,6 @@ bibentry(
   title    = "roinc: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API",
   author   = person("Ernest Guevarra"),
   year     = "2026",
-  note     = "R package version 0.0.9000",
+  note     = "R package version 0.0.9001",
   url      = "https://oxford-ihtm.io/roinc/"
 )
