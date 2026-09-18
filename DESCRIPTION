@@ -1,7 +1,7 @@
 Package: roinc
 Type: Package
 Title: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: person(given = "Ernest", 
                   family = "Guevarra", 
                   comment = c(ORCID = "0000-0002-4887-4415"), 

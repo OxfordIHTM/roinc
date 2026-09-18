@@ -1,35 +1,40 @@
 ---
-output: github_document
+title: "About LOINC and getting started with {roinc}"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{About LOINC and getting started with {roinc}}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  comment = "#>"
 )
 ```
 
-# roinc: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API <img src="man/figures/logo.png" width="200" align="right" />
+```{r setup, echo = FALSE}
+library(roinc)
+```
 
-<!-- badges: start -->
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/OxfordIHTM/roinc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/roinc/actions/workflows/R-CMD-check.yaml)
-[![test-coverage.yaml](https://github.com/OxfordIHTM/roinc/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/OxfordIHTM/roinc/actions/workflows/test-coverage.yaml)
-[![Codecov test coverage](https://codecov.io/gh/OxfordIHTM/roinc/graph/badge.svg)](https://app.codecov.io/gh/OxfordIHTM/roinc)
-[![CodeFactor](https://www.codefactor.io/repository/github/oxfordihtm/roinc/badge)](https://www.codefactor.io/repository/github/oxfordihtm/roinc)
-[![DOI](https://zenodo.org/badge/1347283230.svg)](https://doi.org/10.5281/zenodo.22831698)
-<!-- badges: end -->
+## About LOINC
 
-The [Logical Observation Identifiers Names and Codes or LOINC](https://loinc.org/) is the international standard for identifying health observations, measurements, and documents. This package interfaces with the LOINC API for their [terminology service](https://loinc.org/fhir), [search](https://loinc.org/kb/api/search-api), and [download](https://loinc.org/kb/api/download) endpoints.
+[Logical Observation Identifiers Names and Codes](https://loinc.org) or [LOINC](https://loinc.org) is a global standard providing universal codes for laboratory and clinical results. It enables interoperability between diverse health systems by ensuring data can be pooled and understood.
 
-## What does the package do?
+LOINC provides standardised, universal names and codes that support the exchange of orders and clinical observations across information systems using established syntax standards, including [HL7](https://hl7.org/fhir/), [CEN TC251](https://www.ehealth-standards.eu/centc251/), [ISO TC215](https://www.iso.org/committee/54960.html), [ASTM(https://www.astm.org/)], and [DICOM](https://www.dicomstandard.org/). These identifiers can serve as coded representations of observations within any interoperability standard that follows the observation–value model, including messaging formats, electronic documents, and application programming interfaces (APIs).
 
-Please note that `{roinc}` is in early experimental development stage and functionalities and their corresponding syntax may change over time until we reach a more stable version.
+For example, LOINC codes are widely used in the Observation Identifier field (OBX-3) of the OBX segment within HL7 Observation Result (ORU) messages, including HL7 version 2.x and ASTM 1238-9410 messages. This enables standardized identification of laboratory observations when information is exchanged between systems such as Clinical Laboratory Information Management Systems (LIMS) and Electronic Health Record (EHR) systems. By providing consistent identifiers for clinical concepts, LOINC facilitates the reliable exchange and interpretation of clinical data across heterogeneous information systems.
+
+LOINC’s database of codes can be accessed in different ways including accessing the content programmatically via application programming interfaces (APIs) to download the entire LOINC database of codes, search the entire LOINC database, and the LOINC terminology service powered by HL7 FHIR.
+
+## The {roinc} package
+
+The `{roinc}` package has been developed to primarily interface with these LOINC API endpoints.
+
+The name of the package is a play between two ideas. First is that of a common approach by package developers of adding an *r* to a regular word that one is considering for a package name to make a link to this being an R package. Second is the concept of *lallation* which is a context in which someone has difficulty in enunciation such that when *l* is pronounced it sounds like an *r* or when *r* is pronounced is sounds like an *l*[^1]. So, we see the spelling of the package as *roinc* with an *r* but our recommended pronunciation is *loinc* which is the name of the standard of which it's API is what this package is interfacing with.
+
+### What does the package do?
 
 Currently, the package provides functions for all the LOINC API endpoints. These functions support:
 
@@ -39,7 +44,7 @@ Currently, the package provides functions for all the LOINC API endpoints. These
 
 * interfacing with the [LOINC FHIR terminology service API endpoints](https://loinc.org/fhir).
 
-## Installation
+### Installation
 
 `{roinc}` is not yet on [CRAN](https://cran.r-project.org) but can be installed from the [Oxford
 iHealth R Universe](https://oxfordihtm.r-universe.dev) as follows:
@@ -65,9 +70,9 @@ Once installed, `{roinc}` can then be loaded into an R session
 library(roinc)
 ```
 
-## Usage
+### Usage
 
-### Authentication
+#### Authentication
 
 All requests to LOINC’s RESTful API endpoints require [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) using a valid LOINC username and password. LOINC logins are available by [registering on the website](https://loinc.org/join). Once you have a LOINC username and password, store these credentials as variables in your working environment by editing your `.Renviron` file and adding the following:
 
@@ -93,7 +98,7 @@ Your username and password should show up when you run these commands.
 
 Once these environment variables are set, all functions that interface and make requests against the LOINC API endpoints will use these credentials to authenticate.
 
-### Retrieve LOINC metadata
+#### Retrieve LOINC metadata
 
 Metadata on all the versions of LOINC can be retrieved via:
 
@@ -131,7 +136,7 @@ and this will provide the following `tibble` output:
 roinc_get_metadata(version = "2.83")
 ```
 
-### Download LOINC primary artifact
+#### Download LOINC primary artifact
 
 The LOINC primary release artifact can be downloaded. The `roinc_download()` functions allows for this download to be done programmatically as shown below:
 
@@ -159,7 +164,7 @@ We can check whether version 2.80 has indeed been downloaded in the temporary di
 file.exists(file.path(tempdir(), "loinc_2.80.zip"))
 ```
 
-### Search LOINC database
+#### Search LOINC database
 
 You can search the extensive LOINC database using the `roinc_search_*()` set of functions. Each of these functions searches within a specific scope of the LOINC database. These scopes can either be the *LOINCs*, the *LOINC answer lists*, the *LOINC parts*, or the *LOINC groups*. For example, if you want to look up *glucose* from the LOINCs search, that can be done as follows:
 
@@ -175,11 +180,11 @@ roinc_search_loincs("glucose")
 
 By default, `roinc_search_loincs()` (and the other `roinc_search_*()` functions) returns a `tibble` of the first 50 rows of the search results with 47 variables/fields. These results can be customised by specifying the arguments for the *number of rows to return*, the *page of results to return*, the *variable/field to sort the results on*, and the *language for the returned results*.
 
-### LOINC terminology services
+#### LOINC terminology services
 
 The LOINC database can be accessed through a terminology service defined by [HL7's FHIR](https://hl7.org/fhir/) standard. The API offers endpoints for three FHIR resources: *code system*, *value set*, and *concept map*. It also has a set of endpoints for *questionnaire* resources to LOINC's wealth of standard assessments and survey content including all child concepts (i.e. questions) and answer lists of a given assessment.
 
-#### Code system
+##### Code system
 
 To get properties available for LOINC as a CodeSystem, use the following command:
 
@@ -207,7 +212,7 @@ To get a specific piece of information, specify the argument for `property` usin
 roinc_codesystem_lookup(code = "4544-3", property = "VersionFirstReleased")
 ```
 
-#### Value sets
+##### Value sets
 
 FHIR’s *ValueSet* resource specifies a set of codes drawn from one or more code systems. In LOINC’s case, three main types of value sets are defined:
 
@@ -253,27 +258,6 @@ roinc_valueset_validate(valueset = "LG33055-1", code = "8867-4")
 
 In the result, the `valueBoolean` returns a value `TRUE` which means that the term is included in the specified value set.
 
-## Citation
 
-If you use the `{roinc}` package in your work, please cite using the suggested citation provided by a call to the `citation()` function as follows:
 
-```{r}
-citation("roinc")
-```
-
-## Community guidelines
-
-Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/OxfordIHTM/roinc/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://oxford-ihtm.io/roinc/CONTRIBUTING.html).
-
-This project is released with a [Contributor Code of Conduct](https://oxford-ihtm.io/roinc/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.
-
-If you are interested in [Oxford iHealth](https://oxford-ihtm.io)’s work
-and would like to join the community or contribute to it’s various
-projects, visit the [Oxford iHealth website](https://oxford-ihtm.io) and
-its [community page](https://oxford-ihtm.io/community/) to learn more.
-
-<br/>
-<br/>
-
-[![This is a project under the Oxford iHealth initiative of the MSc in International Health and Tropical Medicine of the Nuffield Department of Medicine, University of Oxford](https://github.com/OxfordIHTM/ihealth-images/blob/main/ihealth/ihealth_footer.png?raw=true)](https://oxford-ihtm.io)
-
+[^1]: A condition that the author of the package suffered from at their young formative years.
