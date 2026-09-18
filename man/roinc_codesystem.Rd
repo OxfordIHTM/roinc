@@ -19,7 +19,8 @@ part, answer list, or answer.}
 
 \item{property}{A string value or vector of string values for specific LOINC
 code system property or properties to return in a lookup. The current list
-of property codes that will return a result are found in \url{https://build.fhir.org/ig/HL7/termchangeset-ig/en/CodeSystem-roinc-property-cs.html}.}
+of property codes that will return a result are found in
+\url{https://build.fhir.org/ig/HL7/termchangeset-ig/en/CodeSystem-roinc-property-cs.html}.}
 
 \item{version}{A string value for LOINC version identifier to specify which
 versions of concepts in LOINC to retrieve.}

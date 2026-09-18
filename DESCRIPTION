@@ -1,7 +1,7 @@
 Package: roinc
 Type: Package
 Title: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: person(given = "Ernest", 
                   family = "Guevarra", 
                   comment = c(ORCID = "0000-0002-4887-4415"), 
@@ -21,14 +21,17 @@ Imports:
     tidyr
 Suggests: 
     httptest2,
+    knitr,
+    rmarkdown,
     spelling,
     testthat (>= 3.0.0),
     withr
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
 Roxygen: list(markdown = TRUE)
 URL: https://oxford-ihtm.io/roinc/, https://github.com/OxfordIHTM/roinc, http://oxford-ihtm.io/roinc/
 BugReports: https://github.com/OxfordIHTM/roinc/issues
 Config/testthat/edition: 3
+VignetteBuilder: knitr
