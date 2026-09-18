@@ -14,8 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      LOINC_USERNAME: ${{ secrets.LOINC_USERNAME }}
-      LOINC_PASSWORD: ${{ secrets.LOINC_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v6
