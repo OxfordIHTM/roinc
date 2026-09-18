@@ -32,7 +32,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">roinc</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9001</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>About LOINC and getting started with {roinc}</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/OxfordIHTM/roinc/blob/v0.0.0.9001/vignettes/roinc.Rmd" class="external-link"><code>vignettes/roinc.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/OxfordIHTM/roinc/blob/main/vignettes/roinc.Rmd" class="external-link"><code>vignettes/roinc.Rmd</code></a></small>
       <div class="d-none name"><code>roinc.Rmd</code></div>
     </div>
 
@@ -194,21 +194,20 @@ these credentials to authenticate.</p>
 the LOINC version, release date, number of LOINCs, and download URL
 sorted starting from the most current LOINC version (as shown
 below):</p>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 65 × 7</span></span></span>
-<span><span class="co">#&gt;    version releaseDate         relmaVersion numberOfLoincs maxLoinc downloadUrl </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2.83    2026-08-19T00:00:00 7.16                 <span style="text-decoration: underline;">112</span>405 115803-9 https://loi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2.82    2026-02-24T17:00:00 7.15                 <span style="text-decoration: underline;">109</span>325 112587-1 https://loi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2.81    2025-08-12T00:00:00 7.14                 <span style="text-decoration: underline;">108</span>248 111472-7 https://loi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2.80    2025-02-26T00:00:00 7.13                 <span style="text-decoration: underline;">104</span>672 107378-2 https://loi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2.79    2025-02-18T00:00:00 7.12                 <span style="text-decoration: underline;">104</span>584 107378-2 https://loi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2.78    2024-08-06T00:00:00 7.11                 <span style="text-decoration: underline;">104</span>054 106413-8 https://loi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2.77    2024-02-27T00:00:00 7.10                 <span style="text-decoration: underline;">102</span>465 104478-3 https://loi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2.76    2023-09-18T00:00:00 7.9                  <span style="text-decoration: underline;">101</span>632 103542-7 https://loi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2.75    2023-08-15T00:00:00 7.8                  <span style="text-decoration: underline;">101</span>632 103542-7 https://loi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2.74    2023-02-22T00:00:00 7.7                   <span style="text-decoration: underline;">99</span>687 101582-5 https://loi…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 55 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: downloadMD5Hash &lt;chr&gt;</span></span></span></code></pre>
+<pre><code><span><span class="co">#&gt; # A tibble: 65 × 7</span></span>
+<span><span class="co">#&gt;    version releaseDate         relmaVersion numberOfLoincs maxLoinc downloadUrl  downloadMD5Hash</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;               &lt;chr&gt;                 &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;          </span></span>
+<span><span class="co">#&gt;  1 2.83    2026-08-19T00:00:00 7.16                 112405 115803-9 https://loi… 057ddf20316470…</span></span>
+<span><span class="co">#&gt;  2 2.82    2026-02-24T17:00:00 7.15                 109325 112587-1 https://loi… 1976936e2232d2…</span></span>
+<span><span class="co">#&gt;  3 2.81    2025-08-12T00:00:00 7.14                 108248 111472-7 https://loi… 09382b5adcb37c…</span></span>
+<span><span class="co">#&gt;  4 2.80    2025-02-26T00:00:00 7.13                 104672 107378-2 https://loi… e4c5f4ec8844d7…</span></span>
+<span><span class="co">#&gt;  5 2.79    2025-02-18T00:00:00 7.12                 104584 107378-2 https://loi… ffab2bb5e76117…</span></span>
+<span><span class="co">#&gt;  6 2.78    2024-08-06T00:00:00 7.11                 104054 106413-8 https://loi… b1328b30141352…</span></span>
+<span><span class="co">#&gt;  7 2.77    2024-02-27T00:00:00 7.10                 102465 104478-3 https://loi… d58f614a5ad09d…</span></span>
+<span><span class="co">#&gt;  8 2.76    2023-09-18T00:00:00 7.9                  101632 103542-7 https://loi… cc2cd40c00d3cd…</span></span>
+<span><span class="co">#&gt;  9 2.75    2023-08-15T00:00:00 7.8                  101632 103542-7 https://loi… 816cfb12de78b3…</span></span>
+<span><span class="co">#&gt; 10 2.74    2023-02-22T00:00:00 7.7                   99687 101582-5 https://loi… 7b064f2b459d43…</span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span></code></pre>
 <p>If you would prefer to have the result in an unflattened list format
 as produced by <code><a href="https://jeroen.r-universe.dev/jsonlite/reference/fromJSON.html" class="external-link">jsonlite::fromJSON()</a></code>, set the argument
 <code>tabular = FALSE</code> as follows:</p>
@@ -265,11 +264,10 @@ for example the latest version which is 2.83, set the argument
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/roinc_get_metadata.html">roinc_get_metadata</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"2.83"</span><span class="op">)</span></span></code></pre></div>
 <p>and this will provide the following <code>tibble</code> output:</p>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 7</span></span></span>
-<span><span class="co">#&gt;   version releaseDate         relmaVersion numberOfLoincs maxLoinc downloadUrl  </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2.83    2026-08-19T00:00:00 7.16                 <span style="text-decoration: underline;">112</span>405 115803-9 https://loin…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: downloadMD5Hash &lt;chr&gt;</span></span></span></code></pre>
+<pre><code><span><span class="co">#&gt; # A tibble: 1 × 7</span></span>
+<span><span class="co">#&gt;   version releaseDate         relmaVersion numberOfLoincs maxLoinc downloadUrl   downloadMD5Hash</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;               &lt;chr&gt;                 &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;          </span></span>
+<span><span class="co">#&gt; 1 2.83    2026-08-19T00:00:00 7.16                 112405 115803-9 https://loin… 057ddf20316470…</span></span></code></pre>
 </div>
 <div class="section level4">
 <h4 id="download-loinc-primary-artifact">Download LOINC primary artifact<a class="anchor" aria-label="anchor" href="#download-loinc-primary-artifact"></a>
@@ -298,7 +296,7 @@ following example, LOINC version 2.80 will be downloaded in a temporary
 directory:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/roinc_download.html">roinc_download</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"2.80"</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/tmp/RtmpSCyGoH/loinc_2.80.zip"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "/tmp/RtmpmJTJfS/loinc_2.80.zip"</span></span></code></pre></div>
 <p>We can check whether version 2.80 has indeed been downloaded in the
 temporary directory:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -320,26 +318,26 @@ done as follows:</p>
 <p>which gives the following <code>tibble</code> of search results:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/roinc_search.html">roinc_search_loincs</a></span><span class="op">(</span><span class="st">"glucose"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 50 × 47</span></span></span>
-<span><span class="co">#&gt;    LOINC_NUM COMPONENT     PROPERTY TIME_ASPCT SYSTEM SCALE_TYP METHOD_TYP CLASS</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 97510-2   Glucose meas… NFr      RptPeriod  Inter… Qn        Calculated CHEM </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2352-3    Glucose CSF/… RelMCnc  Pt         Plas+… Qn        <span style="color: #BB0000;">NA</span>         CHEM </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 25670-1   Glucose^30M … MCnc     Pt         Urine  Qn        <span style="color: #BB0000;">NA</span>         CHAL </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 25675-0   Glucose^4H p… MCnc     Pt         Urine  Qn        <span style="color: #BB0000;">NA</span>         CHAL </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 26545-4   Glucose^6H p… MCnc     Pt         Urine  Qn        <span style="color: #BB0000;">NA</span>         CHAL </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 26540-5   Glucose^3H p… MCnc     Pt         Urine  Qn        <span style="color: #BB0000;">NA</span>         CHAL </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 26542-1   Glucose^5H p… MCnc     Pt         Urine  Qn        <span style="color: #BB0000;">NA</span>         CHAL </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 18296-4   Glucose^post… Imp      Pt         Ser/P… Nom       <span style="color: #BB0000;">NA</span>         CHAL </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 47622-6   Glucose^pre … SCnc     Pt         Ser/P… Qn        <span style="color: #BB0000;">NA</span>         CHAL </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 108027-4  Glucose       {Measur… -          Urine  -         <span style="color: #BB0000;">NA</span>         LABO…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 40 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 39 more variables: VersionLastChanged &lt;chr&gt;, CHNG_TYPE &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   DefinitionDescription &lt;chr&gt;, STATUS &lt;chr&gt;, CLASSTYPE &lt;int&gt;, FORMULA &lt;lgl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ExampleAnswers &lt;chr&gt;, SURVEY_QUEST_TEXT &lt;chr&gt;, SURVEY_QUEST_SRC &lt;lgl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   UNITSREQUIRED &lt;chr&gt;, RELATEDNAMES2 &lt;chr&gt;, SHORTNAME &lt;chr&gt;, ORDER_OBS &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   HL7_FIELD_SUBFIELD_ID &lt;lgl&gt;, EXTERNAL_COPYRIGHT_NOTICE &lt;lgl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   EXAMPLE_UNITS &lt;chr&gt;, LONG_COMMON_NAME &lt;chr&gt;, EXAMPLE_UCUM_UNITS &lt;chr&gt;, …</span></span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 50 × 47</span></span>
+<span><span class="co">#&gt;    LOINC_NUM COMPONENT  PROPERTY TIME_ASPCT SYSTEM SCALE_TYP METHOD_TYP CLASS VersionLastChanged</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;             </span></span>
+<span><span class="co">#&gt;  1 97510-2   Glucose m… NFr      RptPeriod  Inter… Qn        Calculated CHEM  2.79              </span></span>
+<span><span class="co">#&gt;  2 2352-3    Glucose C… RelMCnc  Pt         Plas+… Qn        &lt;NA&gt;       CHEM  2.42              </span></span>
+<span><span class="co">#&gt;  3 25670-1   Glucose^3… MCnc     Pt         Urine  Qn        &lt;NA&gt;       CHAL  2.73              </span></span>
+<span><span class="co">#&gt;  4 25675-0   Glucose^4… MCnc     Pt         Urine  Qn        &lt;NA&gt;       CHAL  2.73              </span></span>
+<span><span class="co">#&gt;  5 26545-4   Glucose^6… MCnc     Pt         Urine  Qn        &lt;NA&gt;       CHAL  2.34              </span></span>
+<span><span class="co">#&gt;  6 26540-5   Glucose^3… MCnc     Pt         Urine  Qn        &lt;NA&gt;       CHAL  2.73              </span></span>
+<span><span class="co">#&gt;  7 26542-1   Glucose^5… MCnc     Pt         Urine  Qn        &lt;NA&gt;       CHAL  2.34              </span></span>
+<span><span class="co">#&gt;  8 18296-4   Glucose^p… Imp      Pt         Ser/P… Nom       &lt;NA&gt;       CHAL  2.26              </span></span>
+<span><span class="co">#&gt;  9 47622-6   Glucose^p… SCnc     Pt         Ser/P… Qn        &lt;NA&gt;       CHAL  2.73              </span></span>
+<span><span class="co">#&gt; 10 108027-4  Glucose    {Measur… -          Urine  -         &lt;NA&gt;       LABO… 2.81              </span></span>
+<span><span class="co">#&gt; # ℹ 40 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 38 more variables: CHNG_TYPE &lt;chr&gt;, DefinitionDescription &lt;chr&gt;, STATUS &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   CLASSTYPE &lt;int&gt;, FORMULA &lt;lgl&gt;, ExampleAnswers &lt;chr&gt;, SURVEY_QUEST_TEXT &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   SURVEY_QUEST_SRC &lt;lgl&gt;, UNITSREQUIRED &lt;chr&gt;, RELATEDNAMES2 &lt;chr&gt;, SHORTNAME &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   ORDER_OBS &lt;chr&gt;, HL7_FIELD_SUBFIELD_ID &lt;lgl&gt;, EXTERNAL_COPYRIGHT_NOTICE &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   EXAMPLE_UNITS &lt;chr&gt;, LONG_COMMON_NAME &lt;chr&gt;, EXAMPLE_UCUM_UNITS &lt;chr&gt;, STATUS_REASON &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   STATUS_TEXT &lt;lgl&gt;, CHANGE_REASON_PUBLIC &lt;chr&gt;, COMMON_TEST_RANK &lt;int&gt;, …</span></span></code></pre></div>
 <p>By default, <code><a href="../reference/roinc_search.html">roinc_search_loincs()</a></code> (and the other
 <code>roinc_search_*()</code> functions) returns a <code>tibble</code>
 of the first 50 rows of the search results with 47 variables/fields.
@@ -366,31 +364,30 @@ following command:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/roinc_codesystem.html">roinc_codesystem</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>which returns:</p>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 15 × 7</span></span></span>
-<span><span class="co">#&gt;    resourceType id             meta$meta type  total link$relation entry$fullUrl</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Bundle       0bde809e-fbe5… 2026-09-… sear…    15 self          https://fhir…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 27 more variables: link$url &lt;chr&gt;, entry$resourceType &lt;chr&gt;, $id &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   $versionId &lt;chr&gt;, $lastUpdated &lt;chr&gt;, $system &lt;chr&gt;, $code &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   $url &lt;chr&gt;, $identifier &lt;list&gt;, $version &lt;chr&gt;, $name &lt;chr&gt;, $title &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   $status &lt;chr&gt;, $experimental &lt;lgl&gt;, $date &lt;chr&gt;, $publisher &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   $contact &lt;list&gt;, $description &lt;chr&gt;, $copyright &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   $caseSensitive &lt;lgl&gt;, $valueSet &lt;chr&gt;, $hierarchyMeaning &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   $compositional &lt;lgl&gt;, $versionNeeded &lt;lgl&gt;, $content &lt;chr&gt;, $count &lt;int&gt;, …</span></span></span></code></pre>
+<pre><code><span><span class="co">#&gt; # A tibble: 15 × 7</span></span>
+<span><span class="co">#&gt;    resourceType id                             meta$meta type  total link$relation entry$fullUrl</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;                          &lt;chr&gt;     &lt;chr&gt; &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;        </span></span>
+<span><span class="co">#&gt;  1 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt;  2 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt;  3 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt;  4 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt;  5 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt;  6 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt;  7 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt;  8 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt;  9 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt; 10 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt; 11 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt; 12 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt; 13 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt; 14 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt; 15 Bundle       9afd0488-4579-47c6-8064-74382… 2026-09-… sear…    15 self          https://fhir…</span></span>
+<span><span class="co">#&gt; # ℹ 27 more variables: link$url &lt;chr&gt;, entry$resourceType &lt;chr&gt;, $id &lt;chr&gt;, $versionId &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   $lastUpdated &lt;chr&gt;, $system &lt;chr&gt;, $code &lt;chr&gt;, $url &lt;chr&gt;, $identifier &lt;list&gt;,</span></span>
+<span><span class="co">#&gt; #   $version &lt;chr&gt;, $name &lt;chr&gt;, $title &lt;chr&gt;, $status &lt;chr&gt;, $experimental &lt;lgl&gt;, $date &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   $publisher &lt;chr&gt;, $contact &lt;list&gt;, $description &lt;chr&gt;, $copyright &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   $caseSensitive &lt;lgl&gt;, $valueSet &lt;chr&gt;, $hierarchyMeaning &lt;chr&gt;, $compositional &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   $versionNeeded &lt;lgl&gt;, $content &lt;chr&gt;, $count &lt;int&gt;, $property &lt;list&gt;</span></span></code></pre>
 <p>To get information on an individual LOINC term, Part, Answer List, or
 Answer string, use <code><a href="../reference/roinc_codesystem.html">roinc_codesystem_lookup()</a></code>. For example,
 using the code <code>4544-3</code> for hematocrit:</p>
@@ -498,11 +495,11 @@ be used. For example, to get the value set definition for answer list
 <span><span class="co">#&gt; [1] "Bundle"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $id</span></span>
-<span><span class="co">#&gt; [1] "5f1e2204-d8c0-48a2-8775-8faa5fda5223"</span></span>
+<span><span class="co">#&gt; [1] "b73872de-0574-4b11-807f-8aef8a77ce17"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $meta</span></span>
 <span><span class="co">#&gt; $meta$lastUpdated</span></span>
-<span><span class="co">#&gt; [1] "2026-09-18T13:49:32.959+00:00"</span></span>
+<span><span class="co">#&gt; [1] "2026-09-18T17:27:23.103+00:00"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $type</span></span>
@@ -704,13 +701,13 @@ be used. For example, to get the value set definition for answer list
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $expansion</span></span>
 <span><span class="co">#&gt; $expansion$id</span></span>
-<span><span class="co">#&gt; [1] "fa4a748e-834b-4d8e-b2a2-a6082e296c20"</span></span>
+<span><span class="co">#&gt; [1] "c9418e1b-c1e5-4907-abbf-bae96d5aa65c"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $expansion$identifier</span></span>
-<span><span class="co">#&gt; [1] "74680424-a6cc-46e4-852f-6342031c6d7f"</span></span>
+<span><span class="co">#&gt; [1] "eebbc1b0-75a7-4055-839e-49fb89b6289c"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $expansion$timestamp</span></span>
-<span><span class="co">#&gt; [1] "2026-09-18T13:49:33+00:00"</span></span>
+<span><span class="co">#&gt; [1] "2026-09-18T17:27:23+00:00"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $expansion$total</span></span>
 <span><span class="co">#&gt; [1] 5</span></span>

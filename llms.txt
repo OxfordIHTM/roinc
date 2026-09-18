@@ -244,7 +244,7 @@ will be downloaded in a temporary directory:
 ``` r
 
 roinc_download(version = "2.80", directory = tempdir())
-#> [1] "/tmp/Rtmp8Hw9T7/loinc_2.80.zip"
+#> [1] "/tmp/RtmpDoT0f6/loinc_2.80.zip"
 ```
 
 We can check whether version 2.80 has indeed been downloaded in the
@@ -331,21 +331,21 @@ which returns:
 #> # A tibble: 15 × 7
 #>    resourceType id             meta$meta type  total link$relation entry$fullUrl
 #>    <chr>        <chr>          <chr>     <chr> <int> <chr>         <chr>        
-#>  1 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#>  2 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#>  3 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#>  4 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#>  5 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#>  6 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#>  7 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#>  8 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#>  9 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#> 10 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#> 11 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#> 12 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#> 13 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#> 14 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
-#> 15 Bundle       9a4e0fd3-841f… 2026-09-… sear…    15 self          https://fhir…
+#>  1 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#>  2 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#>  3 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#>  4 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#>  5 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#>  6 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#>  7 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#>  8 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#>  9 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#> 10 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#> 11 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#> 12 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#> 13 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#> 14 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
+#> 15 Bundle       81b3e135-5091… 2026-09-… sear…    15 self          https://fhir…
 #> # ℹ 27 more variables: link$url <chr>, entry$resourceType <chr>, $id <chr>,
 #> #   $versionId <chr>, $lastUpdated <chr>, $system <chr>, $code <chr>,
 #> #   $url <chr>, $identifier <list>, $version <chr>, $name <chr>, $title <chr>,
@@ -477,11 +477,11 @@ which returns
 #> [1] "Bundle"
 #> 
 #> $id
-#> [1] "d514bab2-ad0c-4ff8-9f5a-f8345271298b"
+#> [1] "5ce54458-978f-4f56-847b-ffe92d39b5fc"
 #> 
 #> $meta
 #> $meta$lastUpdated
-#> [1] "2026-09-17T11:59:03.836+00:00"
+#> [1] "2026-09-18T16:19:57.504+00:00"
 #> 
 #> 
 #> $type
@@ -691,13 +691,13 @@ which returns
 #> 
 #> $expansion
 #> $expansion$id
-#> [1] "7de6bbc4-2d6b-4c60-a48b-215d0c63b288"
+#> [1] "63255bb2-0573-4e1e-ab84-db68cecc08f5"
 #> 
 #> $expansion$identifier
-#> [1] "3339644d-ef3e-4818-a5c9-ca30430abd40"
+#> [1] "6a9d34ed-a6b9-4066-8ad1-06ee37f1f4c8"
 #> 
 #> $expansion$timestamp
-#> [1] "2026-09-17T11:59:04+00:00"
+#> [1] "2026-09-18T16:19:57+00:00"
 #> 
 #> $expansion$total
 #> [1] 5
@@ -828,8 +828,9 @@ citation("roinc")
 #> To cite loinc in publications use:
 #> 
 #>   Ernest Guevarra (2026). _roinc: Interface to the Logical Observation
-#>   Identifiers Names and Codes (LOINC) API_. R package version 0.0.9000,
-#>   <https://oxford-ihtm.io/roinc/>.
+#>   Identifiers Names and Codes (LOINC) API_. doi:10.5281/zenodo.22831698
+#>   <https://doi.org/10.5281/zenodo.22831698>. R package version
+#>   0.0.9002, <https://oxford-ihtm.io/roinc/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -837,8 +838,9 @@ citation("roinc")
 #>     title = {roinc: Interface to the Logical Observation Identifiers Names and Codes (LOINC) API},
 #>     author = {{Ernest Guevarra}},
 #>     year = {2026},
-#>     note = {R package version 0.0.9000},
+#>     note = {R package version 0.0.9002},
 #>     url = {https://oxford-ihtm.io/roinc/},
+#>     doi = {10.5281/zenodo.22831698},
 #>   }
 ```
 
